@@ -1,0 +1,54 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const approaches = [
+  { title: 'Personalised', desc: 'Plans built around your body, preferences, and schedule, not a generic template.', img: '/images/nut4.jpeg' },
+  { title: 'Evidence-based', desc: 'Guidance grounded in current nutrition science, not trends or fads.', img: '/images/nut8.jpeg' },
+  { title: 'Sustainable', desc: 'Habits designed to actually stick, long after coaching ends.', img: '/images/nut10.jpeg' },
+];
+---
+<Layout title="Nutrition">
+  <section class="max-w-5xl mx-auto px-6 py-16 grid md:grid-cols-2 gap-14 items-center">
+    <div>
+      <p class="uppercase tracking-[0.25em] text-sm text-white/60 mb-4">Nutrition</p>
+      <h1 class="text-4xl mb-6">Nutrition coaching that fits your life</h1>
+      <p class="text-white/85 leading-relaxed mb-4">
+        As a Registered Associate Nutritionist, I work with clients to build practical, realistic habits
+        around food, whether your goal is more energy, better digestion, a healthier relationship
+        with eating, or general wellbeing.
+      </p>
+    </div>
+    <div class="aspect-[4/5] rounded-2xl border border-white/25 overflow-hidden">
+      <img src="/images/nut2.jpeg" alt="Nutrition consultation with Leah" class="w-full h-full object-cover" />
+    </div>
+  </section>
+
+  <section class="bg-white text-terra-500">
+    <div class="max-w-5xl mx-auto px-6 py-16">
+      <h2 class="text-3xl text-center mb-14">My Approach</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        {approaches.map((a) => (
+          <div class="border border-terra-500/40 rounded-2xl p-8 text-center">
+            <div class="aspect-square rounded-xl overflow-hidden mb-6">
+              <img src={a.img} alt={a.title} class="w-full h-full object-cover" />
+            </div>
+            <h3 class="text-xl mb-3 font-semibold">{a.title}</h3>
+            <p class="text-terra-500 text-sm leading-relaxed">{a.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="border-t border-white/15">
+    <div class="max-w-3xl mx-auto px-6 py-16 text-center">
+      <h2 class="text-3xl mb-6">Ready to get started?</h2>
+      <p class="text-white/85 mb-8">
+        Book a free 15-minute discovery call, with no commitment, just a chat.
+      </p>
+      <a href="/services" class="inline-block bg-white text-terra-500 px-7 py-3 rounded-full hover:bg-white/90 transition font-medium">
+        View Coaching Options
+      </a>
+    </div>
+  </section>
+</Layout>
