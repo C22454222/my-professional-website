@@ -1,43 +1,109 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const links = [
-  { label: 'Book a Yoga Class', href: '/yoga' },
-  { label: 'Nutrition Coaching', href: '/nutrition' },
-  { label: '1:1 Coaching', href: '/services' },
-  { label: 'Group Programmes', href: '/yoga' },
-  { label: 'Book a Discovery Call', href: '/services' },
-  { label: 'My Website', href: '/' },
-  { label: 'Email Me', href: 'mailto:leahkanellos10@gmail.com' },
-  { label: 'WhatsApp', href: 'https://wa.me/447883125933' },
-  { label: 'Instagram', href: 'https://www.instagram.com/leahkanellos' },
-  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/leah-kanellos-49b092278' },
-  { label: 'Contact Me', href: '/contact' },
-].map((l) => ({
-  ...l,
-  isExternal: l.href.startsWith('http'),
-}));
+const WEB3FORMS_ACCESS_KEY = "b1dec726-cbf5-4a4b-a49c-82e2251eb72e";
 ---
-<Layout title="Links">
-  <section class="min-h-screen flex items-center justify-center px-6 py-16">
-    <div class="w-full max-w-sm text-center">
-      <img src="/images/LeahHeadshot.jpg" alt="Leah Kanellos" class="w-24 h-24 rounded-full object-cover mx-auto mb-6 border border-white/30" />
-      <h1 class="text-2xl font-display mb-2">Leah Kanellos</h1>
-      <p class="text-white/75 text-sm mb-10">Registered Associate Nutritionist &amp; Yoga Instructor</p>
+<Layout title="Contact">
+  <section class="max-w-3xl mx-auto px-6 pt-24 pb-14 text-center">
+    <p class="uppercase tracking-[0.25em] text-sm text-white/60 mb-4">Contact</p>
+    <h1 class="text-4xl mb-6">Get In Touch</h1>
+    <p class="text-white/85">Tell me about your business and I'll get back to you with a free quote.</p>
+  </section>
 
-      <div class="space-y-3">
-        {links.map((l) => (
-          l.isExternal ? (
-            <a href={l.href} target="_blank" rel="noopener" class="block border border-white/30 rounded-full py-3 px-6 text-sm hover:bg-white/10 transition">
-              {l.label}
-            </a>
-          ) : (
-            <a href={l.href} class="block border border-white/30 rounded-full py-3 px-6 text-sm hover:bg-white/10 transition">
-              {l.label}
-            </a>
-          )
-        ))}
+  <section class="bg-white text-brand-500">
+    <div class="max-w-4xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-10">
+      <div class="space-y-4">
+        <a href="mailto:hello@harbourwebstudio.ie" class="block border border-brand-500/25 rounded-2xl p-6 hover:bg-brand-500/5 transition">
+          <p class="text-brand-500/70 text-xs uppercase tracking-wide mb-1 flex items-center gap-2">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
+            Email
+          </p>
+          <p class="text-brand-500">hello@harbourwebstudio.ie</p>
+        </a>
+        <a href="https://wa.me/353000000000" target="_blank" rel="noopener" class="block border border-brand-500/25 rounded-2xl p-6 hover:bg-brand-500/5 transition">
+          <p class="text-brand-500/70 text-xs uppercase tracking-wide mb-1 flex items-center gap-2">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 6.3a8.9 8.9 0 0 0-14.1 10.7L2 22l5.1-1.4A8.9 8.9 0 0 0 20.9 12a8.8 8.8 0 0 0-3.3-5.7Zm-5.6 13.6a7.4 7.4 0 0 1-3.8-1l-.3-.2-2.8.8.8-2.7-.2-.3a7.4 7.4 0 1 1 6.3 3.4Zm4-5.5c-.2-.1-1.3-.7-1.5-.7-.2-.1-.4-.1-.5.1-.2.2-.6.7-.7.9-.1.1-.3.2-.5.1-.2-.1-1-.4-1.9-1.2-.7-.6-1.2-1.4-1.3-1.6-.1-.2 0-.4.1-.5l.4-.4c.1-.1.2-.3.2-.4.1-.2 0-.3 0-.4l-.7-1.6c-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 1.9s.8 2.2.9 2.4c.1.2 1.6 2.5 3.9 3.5.5.2 1 .4 1.3.5.5.2 1 .1 1.4.1.4-.1 1.3-.5 1.5-1 .2-.5.2-.9.1-1l-.4-.2Z"/></svg>
+            WhatsApp
+          </p>
+          <p class="text-brand-500">+353 00 000 0000</p>
+        </a>
+        <a href="https://www.instagram.com/harbourwebstudio" target="_blank" rel="noopener" class="block border border-brand-500/25 rounded-2xl p-6 hover:bg-brand-500/5 transition">
+          <p class="text-brand-500/70 text-xs uppercase tracking-wide mb-1 flex items-center gap-2">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+            Instagram
+          </p>
+          <p class="text-brand-500">@harbourwebstudio</p>
+        </a>
+        <a href="https://www.linkedin.com/company/harbourwebstudio" target="_blank" rel="noopener" class="block border border-brand-500/25 rounded-2xl p-6 hover:bg-brand-500/5 transition">
+          <p class="text-brand-500/70 text-xs uppercase tracking-wide mb-1 flex items-center gap-2">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.55 4.78 5.87V21h-4v-5.6c0-1.34-.03-3.06-1.87-3.06-1.87 0-2.16 1.46-2.16 2.96V21h-4V9Z"/></svg>
+            LinkedIn
+          </p>
+          <p class="text-brand-500">Harbour Web Studio</p>
+        </a>
+      </div>
+
+      <div>
+        <form id="contact-form" class="space-y-4">
+          <input type="hidden" name="access_key" value={WEB3FORMS_ACCESS_KEY} />
+          <input type="hidden" name="subject" value="New enquiry from Harbour Web Studio website" />
+          <input type="hidden" name="from_name" value="Harbour Web Studio Website" />
+          <input type="checkbox" name="botcheck" class="hidden" tabindex="-1" autocomplete="off" />
+
+          <input type="text" name="name" placeholder="Your name" required
+            class="w-full border border-brand-500/25 rounded-lg px-4 py-2 text-brand-500 placeholder-brand-500/40" />
+          <input type="text" name="business" placeholder="Business name" 
+            class="w-full border border-brand-500/25 rounded-lg px-4 py-2 text-brand-500 placeholder-brand-500/40" />
+          <input type="email" name="email" placeholder="Your email" required
+            class="w-full border border-brand-500/25 rounded-lg px-4 py-2 text-brand-500 placeholder-brand-500/40" />
+          <textarea name="message" placeholder="Tell me a bit about your business and what you need" rows="6" required
+            class="w-full border border-brand-500/25 rounded-lg px-4 py-2 text-brand-500 placeholder-brand-500/40"></textarea>
+          <button type="submit"
+            class="w-full bg-brand-500 text-white py-2 rounded-full hover:bg-brand-500/90 transition font-medium">
+            Send Message
+          </button>
+          <p id="form-status" role="status" class="text-sm text-center min-h-[1.2rem]"></p>
+        </form>
       </div>
     </div>
   </section>
 </Layout>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const status = document.getElementById('form-status') as HTMLParagraphElement;
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+    submitBtn.disabled = true;
+    status.textContent = 'Sending…';
+
+    const formData = new FormData(form);
+    const object: Record<string, string> = {};
+    formData.forEach((value, key) => { object[key] = value.toString(); });
+    const json = JSON.stringify(object);
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: json,
+      });
+      const result = await res.json();
+
+      if (result.success) {
+        status.textContent = 'Thanks! Your message has been sent.';
+        form.reset();
+      } else {
+        status.textContent = 'Something went wrong. Please try again.';
+        console.error(result);
+      }
+    } catch (err) {
+      status.textContent = 'Network error. Please try again.';
+      console.error(err);
+    } finally {
+      submitBtn.disabled = false;
+    }
+  });
+</script>

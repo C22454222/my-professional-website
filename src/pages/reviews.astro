@@ -29,8 +29,8 @@ const reviews = [
 
       <form id="review-form" class="space-y-4">
         <input type="hidden" name="access_key" value={WEB3FORMS_ACCESS_KEY} />
-        <input type="hidden" name="subject" value="New review submitted on website" />
-        <input type="hidden" name="from_name" value="Leah's Website Reviews" />
+        <input type="hidden" name="subject" value="New review submitted on Harbour Web Studio website" />
+        <input type="hidden" name="from_name" value="Harbour Web Studio Reviews" />
         <input type="checkbox" name="botcheck" class="hidden" tabindex="-1" autocomplete="off" />
 
         <input
@@ -45,12 +45,12 @@ const reviews = [
           required
           class="w-full border border-white/25 bg-white/5 rounded-lg px-4 py-2 text-white"
         >
-          <option value="" class="text-terra-500">Rating</option>
-          <option value="5" class="text-terra-500">★★★★★</option>
-          <option value="4" class="text-terra-500">★★★★</option>
-          <option value="3" class="text-terra-500">★★★</option>
-          <option value="2" class="text-terra-500">★★</option>
-          <option value="1" class="text-terra-500">★</option>
+          <option value="" class="text-brand-500">Rating</option>
+          <option value="5" class="text-brand-500">★★★★★</option>
+          <option value="4" class="text-brand-500">★★★★</option>
+          <option value="3" class="text-brand-500">★★★</option>
+          <option value="2" class="text-brand-500">★★</option>
+          <option value="1" class="text-brand-500">★</option>
         </select>
         <textarea
           name="message"
@@ -61,7 +61,7 @@ const reviews = [
         ></textarea>
         <button
           type="submit"
-          class="w-full bg-white text-terra-500 py-2 rounded-full hover:bg-white/90 transition font-medium"
+          class="w-full bg-white text-brand-500 py-2 rounded-full hover:bg-white/90 transition font-medium"
         >
           Submit Review
         </button>
@@ -71,20 +71,20 @@ const reviews = [
   </section>
 
   <!-- Testimonials AFTER the form -->
-  <section class="bg-white text-terra-500">
+  <section class="bg-white text-brand-500">
     <div class="max-w-5xl mx-auto px-6 py-20">
       <h2 class="text-3xl text-center mb-10">What Clients Say</h2>
       <div class="grid md:grid-cols-3 gap-6">
         {reviews.map((r) => (
-          <div class="border border-terra-500/25 rounded-2xl p-7">
-            <div class="text-terra-500 mb-3">
+          <div class="border border-brand-500/25 rounded-2xl p-7">
+            <div class="text-brand-500 mb-3">
               {'★'.repeat(r.rating)}
               {'☆'.repeat(5 - r.rating)}
             </div>
-            <p class="text-terra-500/85 text-sm leading-relaxed mb-4">
+            <p class="text-brand-500/85 text-sm leading-relaxed mb-4">
               "{r.text}"
             </p>
-            <p class="text-terra-500/70 text-sm">By {r.name}</p>
+            <p class="text-brand-500/70 text-sm">By {r.name}</p>
           </div>
         ))}
       </div>

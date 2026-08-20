@@ -3,50 +3,51 @@ import Layout from '../layouts/Layout.astro';
 
 const services = [
   {
-    name: 'Free Discovery Call',
-    duration: '15 minutes',
-    desc: "A relaxed, no-pressure chat to see if we're a good fit and talk through your goals.",
+    name: 'Simple Website',
+    price: '€250',
+    desc: '3-5 pages, custom design, mobile responsive. Perfect for getting a professional presence online fast.',
   },
   {
-    name: 'Initial Coaching Session',
-    desc: 'An in-depth first session covering your history, goals, and a personalised starting plan.',
+    name: 'Custom Business Website',
+    price: '€400 - €600',
+    desc: 'More pages, animations, forms and integrations, plus SEO so people can actually find you.',
   },
   {
-    name: 'Follow-up Coaching Session',
-    desc: 'Ongoing sessions to review progress, adjust your plan, and keep momentum going.',
+    name: 'Advanced Website',
+    price: '€700 - €1,500+',
+    desc: 'Booking systems, e-commerce, databases, APIs and custom functionality built around your business.',
   },
   {
-    name: 'Accountability / Check-in Call',
-    desc: 'A shorter check-in between full sessions to stay on track and troubleshoot.',
+    name: 'Maintenance & Hosting',
+    price: '€20 - €50 / month',
+    desc: 'Hosting, backups, updates, small changes and monitoring, so your site keeps running smoothly.',
   },
 ];
 ---
 
 <Layout title="Services">
   <section class="max-w-3xl mx-auto px-6 pt-24 pb-14 text-center">
-    <p class="uppercase tracking-[0.25em] text-sm text-white/60 mb-4">Coaching</p>
+    <p class="uppercase tracking-[0.25em] text-sm text-white/60 mb-4">Pricing</p>
     <h1 class="text-4xl mb-6">Services</h1>
     <p class="text-white/85">
-      Simple, flexible coaching options. Start with a free call, with no obligation.
+      Simple, transparent pricing. A completely customised professional website, ready within a week.
     </p>
   </section>
 
-  <section class="bg-white text-terra-500">
+  <section class="bg-white text-brand-500">
     <div class="max-w-5xl mx-auto px-6 py-24">
       <div class="grid md:grid-cols-2 gap-6">
         {services.map((s) => (
-          <div class="border border-terra-500/25 rounded-2xl p-8">
+          <div class="border border-brand-500/25 rounded-2xl p-8">
             <div class="flex items-baseline justify-between mb-2">
               <h3 class="text-xl">{s.name}</h3>
-              {s.duration && (
-                <span class="text-terra-500/70 text-sm">{s.duration}</span>
-              )}
+              <span class="text-brand-500/70 text-sm">{s.price}</span>
             </div>
-            <p class="text-terra-500/85 text-sm leading-relaxed mb-4">{s.desc}</p>
+            <p class="text-brand-500/85 text-sm leading-relaxed mb-4">{s.desc}</p>
             <div class="flex items-center justify-between">
-              <span class="text-sm text-terra-500/70">Pricing available on request</span>
+              <span class="text-sm text-brand-500/70">Free, no-obligation quote</span>
               <a href="/contact" class="text-sm underline hover:opacity-70 transition">
-                Book now
+                Get in touch
               </a>
             </div>
           </div>

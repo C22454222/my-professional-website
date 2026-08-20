@@ -4,27 +4,22 @@ export default {
   theme: {
     extend: {
       colors: {
-        sky: {
-          50: '#f0f8fc',
-          100: '#dcedf7',
-          200: '#b3d9ee',
-          300: '#82bfe1',
-          400: '#4fa0d0',
-          500: '#2E7FB8',
-          600: '#25689a',
-          700: '#1f527a',
-          800: '#1a415f',
-          900: '#153349',
-        },
-        cream: {
-          50: '#fffaf5',
-          100: '#fdf1e5',
-          200: '#f7e0cc',
+        brand: {
+          50: '#eef6fd',
+          100: '#d9ecfa',
+          200: '#b3d8f5',
+          300: '#82bfee',
+          400: '#4b9fe0',
+          500: '#1d78c9',
+          600: '#155fa3',
+          700: '#124c82',
+          800: '#123f69',
+          900: '#123457',
         },
       },
       fontFamily: {
         display: ['"Playfair Display"', 'serif'],
-        body: ['"Inter"', 'sans-serif'],
+        body: ['"Nunito Sans"', 'sans-serif'],
       },
     },
   },

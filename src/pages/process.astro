@@ -1,0 +1,53 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const approaches = [
+  { title: 'Personalised', desc: 'Every site is designed around your business, your customers and how you actually work, not a generic template.', img: '/images/studio4.jpeg' },
+  { title: 'Built to convert', desc: 'Clear calls to action and a design focused on turning visitors into calls, bookings and customers.', img: '/images/studio5.jpeg' },
+  { title: 'Fast turnaround', desc: 'Most simple websites are designed, built and live within a week.', img: '/images/studio6.jpeg' },
+];
+---
+<Layout title="Process">
+  <section class="max-w-5xl mx-auto px-6 py-16 grid md:grid-cols-2 gap-14 items-center">
+    <div>
+      <p class="uppercase tracking-[0.25em] text-sm text-white/60 mb-4">Process</p>
+      <h1 class="text-4xl mb-6">How a project works, start to finish</h1>
+      <p class="text-white/85 leading-relaxed mb-4">
+        No jargon, no long contracts. A quick chat to understand your business, a custom design
+        built around it, and a site that's live fast, with support after launch if you need it.
+      </p>
+    </div>
+    <div class="aspect-[4/5] rounded-2xl border border-white/25 overflow-hidden">
+      <img src="/images/studio7.jpeg" alt="Planning a website project" class="w-full h-full object-cover" />
+    </div>
+  </section>
+
+  <section class="bg-white text-brand-500">
+    <div class="max-w-5xl mx-auto px-6 py-16">
+      <h2 class="text-3xl text-center mb-14">What Makes It Different</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        {approaches.map((a) => (
+          <div class="border border-brand-500/40 rounded-2xl p-8 text-center">
+            <div class="aspect-square rounded-xl overflow-hidden mb-6">
+              <img src={a.img} alt={a.title} class="w-full h-full object-cover" />
+            </div>
+            <h3 class="text-xl mb-3 font-semibold">{a.title}</h3>
+            <p class="text-brand-500 text-sm leading-relaxed">{a.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="border-t border-white/15">
+    <div class="max-w-3xl mx-auto px-6 py-16 text-center">
+      <h2 class="text-3xl mb-6">Ready to get started?</h2>
+      <p class="text-white/85 mb-8">
+        Get a free, no-obligation quote for your business, usually within a day.
+      </p>
+      <a href="/contact" class="inline-block bg-white text-brand-500 px-7 py-3 rounded-full hover:bg-white/90 transition font-medium">
+        Get a Free Quote
+      </a>
+    </div>
+  </section>
+</Layout>

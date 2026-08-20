@@ -1,0 +1,37 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const projects = [
+  { name: 'Local Barbershop', type: 'Simple Website', desc: 'A clean 4-page site with booking links and an Instagram feed.', img: '/images/project1.jpeg' },
+  { name: 'Dundrum Landscaping Co.', type: 'Custom Business Website', desc: 'A gallery-led site with a quote request form and local SEO.', img: '/images/project2.jpeg' },
+  { name: 'South Dublin Dental Clinic', type: 'Advanced Website', desc: 'An appointment booking system with treatment pages and patient forms.', img: '/images/project3.jpeg' },
+];
+---
+<Layout title="Portfolio">
+  <section class="max-w-3xl mx-auto px-6 pt-24 pb-14 text-center">
+    <p class="uppercase tracking-[0.25em] text-sm text-white/60 mb-4">Portfolio</p>
+    <h1 class="text-4xl mb-6">Recent Work</h1>
+    <p class="text-white/85">
+      A look at the kind of sites built for local Dublin businesses.
+    </p>
+  </section>
+
+  <section class="bg-white text-brand-500">
+    <div class="max-w-5xl mx-auto px-6 py-24">
+      <div class="grid md:grid-cols-3 gap-8">
+        {projects.map((p) => (
+          <div class="border border-brand-500/25 rounded-2xl overflow-hidden">
+            <div class="aspect-[4/3] overflow-hidden">
+              <img src={p.img} alt={p.name} class="w-full h-full object-cover" />
+            </div>
+            <div class="p-6">
+              <p class="text-brand-500/70 text-xs uppercase tracking-wide mb-1">{p.type}</p>
+              <h3 class="text-lg mb-2">{p.name}</h3>
+              <p class="text-brand-500/85 text-sm leading-relaxed">{p.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
