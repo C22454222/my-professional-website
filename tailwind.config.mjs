@@ -18,8 +18,8 @@ export default {
         },
       },
       fontFamily: {
-        display: ['"Playfair Display"', 'serif'],
-        body: ['"Nunito Sans"', 'sans-serif'],
+        display: ['"Cormorant Garamond"', 'serif'],
+        body: ['"Inter"', 'sans-serif'],
       },
     },
   },

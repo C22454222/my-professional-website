@@ -2,8 +2,8 @@
 import '../styles/global.css';
 
 const {
-  title = 'Harbour Web Studio - Affordable Custom Websites for Dublin Businesses',
-  description = 'Custom, professional websites for Dublin businesses, built fast and priced fairly. No templates, no agency price tag.'
+  title = 'Christopher Noblett - Affordable Custom Websites',
+  description = 'Custom, professional websites for businesses, clinics and tradespeople, built fast and priced fairly. Based in Dublin, working with clients everywhere.'
 } = Astro.props;
 
 const navLinks = [
@@ -13,7 +13,6 @@ const navLinks = [
   { label: 'Portfolio', href: '/portfolio' },
   { label: 'Reviews', href: '/reviews' },
   { label: 'Contact', href: '/contact' },
-  { label: 'Link-in-bio', href: '/links' },
 ];
 ---
 <!doctype html>
@@ -29,7 +28,7 @@ const navLinks = [
   <header class="sticky top-0 z-50 border-b border-brand-500/15 bg-white">
     <nav class="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
       <a href="/" class="flex items-center gap-2 font-display text-xl md:text-[1.6rem] tracking-wide text-brand-500">
-        Harbour Web Studio
+        Christopher Noblett
       </a>
 
       <div class="hidden md:flex items-center gap-8 text-sm tracking-wide uppercase text-brand-500">
@@ -62,9 +61,9 @@ const navLinks = [
   <footer class="border-t border-white/15 mt-24 bg-brand-500 text-white">
     <div class="max-w-6xl mx-auto px-6 py-16 grid md:grid-cols-4 gap-10 text-sm">
       <div class="md:col-span-2">
-        <p class="font-display text-xl mb-3">Harbour Web Studio</p>
+        <p class="font-display text-xl mb-3">Christopher Noblett</p>
         <p class="text-white/75 leading-relaxed mb-6 max-w-sm">
-          Affordable, custom-built websites for Dublin's tradespeople, small businesses and local brands.
+          Affordable, custom-built websites for tradespeople, clinics, small businesses and local brands. Based in Dublin.
         </p>
       </div>
 
@@ -76,7 +75,6 @@ const navLinks = [
           <li><a href="/process" class="hover:opacity-70 transition">Process</a></li>
           <li><a href="/portfolio" class="hover:opacity-70 transition">Portfolio</a></li>
           <li><a href="/reviews" class="hover:opacity-70 transition">Reviews</a></li>
-          <li><a href="/links" class="hover:opacity-70 transition">Link-in-bio</a></li>
         </ul>
       </div>
 
@@ -106,7 +104,7 @@ const navLinks = [
     </div>
 
     <div class="border-t border-white/10 py-6 text-center text-xs text-white/60 px-6">
-      <p>&copy; {new Date().getFullYear()} Harbour Web Studio. All rights reserved.</p>
+      <p>&copy; {new Date().getFullYear()} Christopher Noblett. All rights reserved.</p>
     </div>
   </footer>
 
