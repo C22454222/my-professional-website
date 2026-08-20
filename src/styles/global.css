@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 body {
-  @apply bg-terra-500 text-white font-body antialiased;
+  @apply bg-sky-500 text-white font-body antialiased;
 }
 
 h1, h2, h3 {
