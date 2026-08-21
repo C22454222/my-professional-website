@@ -4,30 +4,48 @@ import Layout from '../layouts/Layout.astro';
 
 <Layout title="About">
   <section class="max-w-6xl mx-auto px-6 py-12 md:py-16">
-    <div class="grid sm:grid-cols-2 gap-6 sm:gap-10 mb-10">
-      <div class="h-64 sm:h-80 md:h-96 rounded-2xl border border-white/25 overflow-hidden">
-        <img
-          src="/images/studio2.jpeg"
-          alt="Working on a website design"
-          class="w-full h-full object-cover"
-        />
-      </div>
-
-      <div class="h-64 sm:h-80 md:h-96 rounded-2xl border border-white/25 overflow-hidden">
-        <img
-          src="/images/studio3.jpeg"
-          alt="Laptop showing website code"
-          class="w-full h-full object-cover"
-        />
-      </div>
-    </div>
-
-    <div class="rounded-2xl border border-white/40 p-8 md:p-14 text-center md:text-left">
+    <div class="rounded-2xl border border-white/40 p-8 md:p-14 text-center md:text-left mb-10">
       <p class="uppercase tracking-[0.25em] text-sm text-white/60 mb-4">
         About
       </p>
 
-      <h1 class="text-4xl mb-6">About Christopher Noblett</h1>
+      <h1 class="text-4xl mb-6">Hi, I'm Christopher</h1>
+
+      <div class="grid sm:grid-cols-[auto,1fr] gap-8 items-start mb-8">
+        <div class="w-40 h-40 sm:w-48 sm:h-48 rounded-2xl border border-white/25 overflow-hidden mx-auto sm:mx-0 shrink-0">
+          <img
+            src="/images/headshot.jpg"
+            alt="Christopher Noblett"
+            class="w-full h-full object-cover"
+          />
+        </div>
+
+        <div class="text-white/85 leading-relaxed space-y-4">
+          <p>
+            <!-- TODO: replace with your own words -->
+            I'm a Dublin-based developer finishing a Computer Science degree at TU Dublin.
+            Outside of client work I've built everything from Android apps to machine learning
+            models, and I genuinely enjoy the problem-solving side of building software as much
+            as the design side.
+          </p>
+          <p>
+            When I'm not building websites, you'll usually find me [add a hobby/interest or two here].
+            I started freelancing because I wanted to help small businesses get the kind of website
+            that's usually reserved for people with agency budgets.
+          </p>
+        </div>
+      </div>
+
+      
+        href="/christopher-noblett-cv.pdf"
+        download
+        class="inline-flex items-center gap-2 border border-white/60 px-6 py-2.5 rounded-full hover:bg-white/10 transition font-medium mb-10"
+      >
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0-4-4m4 4 4-4M4 21h16"/></svg>
+        Download CV
+      </a>
+
+      <hr class="border-white/15 mb-10" />
 
       <div class="text-white/85 leading-relaxed space-y-4 md:columns-2 md:gap-10">
         <p>
@@ -61,6 +79,24 @@ import Layout from '../layouts/Layout.astro';
         <p>
           Custom Design • Mobile Responsive • Fast Turnaround • Local &amp; Affordable
         </p>
+      </div>
+    </div>
+
+    <div class="grid sm:grid-cols-2 gap-6 sm:gap-10 mb-10">
+      <div class="h-64 sm:h-80 md:h-96 rounded-2xl border border-white/25 overflow-hidden">
+        <img
+          src="/images/studio2.jpeg"
+          alt="Working on a website design"
+          class="w-full h-full object-cover"
+        />
+      </div>
+
+      <div class="h-64 sm:h-80 md:h-96 rounded-2xl border border-white/25 overflow-hidden">
+        <img
+          src="/images/studio3.jpeg"
+          alt="Laptop showing website code"
+          class="w-full h-full object-cover"
+        />
       </div>
     </div>
   </section>
