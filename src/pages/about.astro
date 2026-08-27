@@ -4,7 +4,7 @@ import Layout from '../layouts/Layout.astro';
 
 <Layout title="About">
   <section class="max-w-6xl mx-auto px-6 py-12 md:py-16">
-    <div class="rounded-2xl border border-white/40 p-8 md:p-14 text-center md:text-left mb-10">
+    <div class="rounded-2xl border border-white/40 p-8 md:p-14 text-center md:text-left mb-10 glass reveal">
       <p class="uppercase tracking-[0.25em] text-sm text-white/60 mb-4">
         About
       </p>
@@ -23,23 +23,23 @@ import Layout from '../layouts/Layout.astro';
         <div class="text-white/85 leading-relaxed space-y-4">
           <p>
             <!-- TODO: replace with your own words -->
-            I'm a Dublin-based developer finishing a Computer Science degree at TU Dublin.
+            I'm a Dublin-based developer finishing a Computer Science degree at Technological University Dublin.
             Outside of client work I've built everything from Android apps to machine learning
             models, and I genuinely enjoy the problem-solving side of building software as much
             as the design side.
           </p>
           <p>
-            When I'm not building websites, you'll usually find me [add a hobby/interest or two here].
-            I started freelancing because I wanted to help small businesses get the kind of website
+            When I'm not building websites, you'll usually find me training for a marathon.
+            I started freelancing because I wanted to help clinics get the kind of website
             that's usually reserved for people with agency budgets.
           </p>
         </div>
       </div>
 
-      
+      <a
         href="/christopher-noblett-cv.pdf"
         download
-        class="inline-flex items-center gap-2 border border-white/60 px-6 py-2.5 rounded-full hover:bg-white/10 transition font-medium mb-10"
+        class="inline-flex items-center gap-2 border border-white/60 px-6 py-2.5 rounded-full hover:bg-white/10 transition font-medium mb-10 glass-hover"
       >
         <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0-4-4m4 4 4-4M4 21h16"/></svg>
         Download CV
@@ -49,26 +49,25 @@ import Layout from '../layouts/Layout.astro';
 
       <div class="text-white/85 leading-relaxed space-y-4 md:columns-2 md:gap-10">
         <p>
-          I build custom websites for clinics, tradespeople, local businesses and small brands who
-          deserve a proper online presence without having to pay agency prices for it. I'm based in
-          Dublin, and I work with clients everywhere.
+          I build custom websites for clinics who deserve a proper online presence without having
+          to pay agency prices for it. I'm based in Dublin, and I work with clinics everywhere.
         </p>
 
         <p>
           Loads of people can build a website. The real advantage here is being able to build
-          something genuinely custom, designed specifically around your business, your customers
+          something genuinely custom, designed specifically around your clinic, your patients
           and how you actually work, without the overheads that come with a big agency.
         </p>
 
         <p>
-          Every project starts with understanding your business first: what you do, who your
-          customers are, and what you need the site to actually achieve, whether that's more
+          Every project starts with understanding your clinic first: what you treat, who your
+          patients are, and what you need the site to actually achieve, whether that's more
           calls, more bookings, or simply looking credible when someone searches for you.
         </p>
 
         <p>
           From there, every site is built by hand rather than assembled from a generic template,
-          so it looks and feels like it belongs to your business, not like it was picked off a shelf.
+          so it looks and feels like it belongs to your clinic, not like it was picked off a shelf.
         </p>
 
         <p>
@@ -83,18 +82,18 @@ import Layout from '../layouts/Layout.astro';
     </div>
 
     <div class="grid sm:grid-cols-2 gap-6 sm:gap-10 mb-10">
-      <div class="h-64 sm:h-80 md:h-96 rounded-2xl border border-white/25 overflow-hidden">
+      <div class="h-64 sm:h-80 md:h-96 rounded-2xl border border-white/25 overflow-hidden glass reveal">
         <img
-          src="/images/studio2.jpeg"
-          alt="Working on a website design"
+          src="/images/about-discovery.svg"
+          alt="Illustration of understanding a clinic's needs before building the site"
           class="w-full h-full object-cover"
         />
       </div>
 
-      <div class="h-64 sm:h-80 md:h-96 rounded-2xl border border-white/25 overflow-hidden">
+      <div class="h-64 sm:h-80 md:h-96 rounded-2xl border border-white/25 overflow-hidden glass reveal reveal-delay-1">
         <img
-          src="/images/studio3.jpeg"
-          alt="Laptop showing website code"
+          src="/images/about-build.svg"
+          alt="Illustration of a custom-coded website built for a clinic"
           class="w-full h-full object-cover"
         />
       </div>
@@ -103,25 +102,25 @@ import Layout from '../layouts/Layout.astro';
 
   <section class="bg-white text-brand-500">
     <div class="max-w-4xl mx-auto px-6 py-16 text-center">
-      <p class="uppercase tracking-[0.25em] text-sm text-brand-500/70 mb-4">
+      <p class="uppercase tracking-[0.25em] text-sm text-brand-500/70 mb-4 reveal">
         The Promise
       </p>
 
-      <h2 class="text-2xl mb-8">
+      <h2 class="text-2xl mb-8 reveal">
         Custom-built, not templated
       </h2>
 
       <div class="grid sm:grid-cols-2 gap-4 text-left max-w-xl mx-auto">
-        <div class="border border-brand-500/25 rounded-xl p-5">
+        <div class="border border-brand-500/25 rounded-xl p-5 reveal">
           <p class="text-brand-500/85">
-            A completely customised website designed around your business, not a one-size-fits-all
+            A completely customised website designed around your clinic, not a one-size-fits-all
             template.
           </p>
         </div>
 
-        <div class="border border-brand-500/25 rounded-xl p-5">
+        <div class="border border-brand-500/25 rounded-xl p-5 reveal reveal-delay-1">
           <p class="text-brand-500/85">
-            Affordable pricing built for growing businesses, with no hidden extras.
+            Affordable pricing built for growing clinics, with no hidden extras.
           </p>
         </div>
       </div>

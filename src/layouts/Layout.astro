@@ -2,8 +2,8 @@
 import '../styles/global.css';
 
 const {
-  title = 'Christopher Noblett - Affordable Custom Websites',
-  description = 'Custom, professional websites for businesses, clinics and tradespeople, built fast and priced fairly. Based in Dublin, working with clients everywhere.'
+  title = 'Christopher Noblett - Websites for Clinics',
+  description = 'Custom, professional websites for clinics, built fast and priced fairly. Based in Dublin, working with clinics everywhere.'
 } = Astro.props;
 
 const navLinks = [
@@ -15,118 +15,157 @@ const navLinks = [
   { label: 'Contact', href: '/contact' },
 ];
 ---
+
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{title}</title>
-  <meta name="description" content={description} />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-</head>
-<body>
-  <header class="sticky top-0 z-50 border-b border-brand-500/15 bg-white">
-    <nav class="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
-      <a href="/" class="flex items-center gap-2 font-display text-xl md:text-[1.6rem] tracking-wide text-brand-500">
-        Christopher Noblett
-      </a>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body>
+    <header class="sticky top-0 z-50 border-b border-white/20 bg-white/70 backdrop-blur-md">
+      <nav class="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
+        <a href="/" class="flex items-center gap-2 font-display text-xl md:text-1.6rem tracking-wide text-brand-500">
+          Christopher Noblett
+        </a>
 
-      <div class="hidden md:flex items-center gap-8 text-sm tracking-wide uppercase text-brand-500">
-        {navLinks.map((link) => (
-          <a href={link.href} class="nav-link hover:opacity-80 transition">{link.label}</a>
-        ))}
-      </div>
+        <div class="hidden md:flex items-center gap-8 text-sm tracking-wide uppercase text-brand-500">
+          {navLinks.map((link) => (
+            <a href={link.href} class="nav-link hover:opacity-80 transition">{link.label}</a>
+          ))}
+        </div>
 
-      <input type="checkbox" id="nav-toggle" class="peer hidden" />
-      <label for="nav-toggle" class="md:hidden cursor-pointer p-2 -mr-2 text-brand-500" aria-label="Menu">
-        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-          <line x1="3" y1="6" x2="21" y2="6" />
-          <line x1="3" y1="12" x2="21" y2="12" />
-          <line x1="3" y1="18" x2="21" y2="18" />
-        </svg>
-      </label>
+        <input type="checkbox" id="nav-toggle" class="peer hidden" />
+        <label for="nav-toggle" class="md:hidden cursor-pointer p-2 -mr-2 text-brand-500" aria-label="Menu">
+          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <line x1="3" y1="12" x2="21" y2="12" />
+            <line x1="3" y1="18" x2="21" y2="18" />
+          </svg>
+        </label>
+      </nav>
 
-      <div class="hidden peer-checked:flex md:hidden flex-col absolute top-full left-0 right-0 bg-white border-t border-brand-500/15 px-6 py-5 gap-4 text-sm uppercase tracking-wide text-brand-500">
+      <div class="hidden peer-checked:flex md:hidden flex-col absolute top-full left-0 right-0 bg-white/90 backdrop-blur-md border-t border-brand-500/15 px-6 py-5 gap-4 text-sm uppercase tracking-wide text-brand-500">
         {navLinks.map((link) => (
           <a href={link.href} class="hover:opacity-80 transition">{link.label}</a>
         ))}
       </div>
-    </nav>
-  </header>
+    </header>
 
-  <main>
-    <slot />
-  </main>
+    <main>
+      <slot name="main" />
+    </main>
 
-  <footer class="border-t border-white/15 mt-24 bg-brand-500 text-white">
-    <div class="max-w-6xl mx-auto px-6 py-16 grid md:grid-cols-4 gap-10 text-sm">
-      <div class="md:col-span-2">
-        <p class="font-display text-xl mb-3">Christopher Noblett</p>
-        <p class="text-white/75 leading-relaxed mb-6 max-w-sm">
-          Affordable, custom-built websites for tradespeople, clinics, small businesses and local brands. Based in Dublin.
-        </p>
+    <footer class="border-t border-white/15 mt-24 bg-brand-500 text-white">
+      <div class="max-w-6xl mx-auto px-6 py-16 grid md:grid-cols-4 gap-10 text-sm">
+        <div class="md:col-span-2">
+          <p class="font-display text-xl mb-3">Christopher Noblett</p>
+          <p class="text-white/75 leading-relaxed mb-6 max-w-sm">
+            Affordable, custom-built websites for tradespeople, clinics, small businesses and local brands. Based in Dublin.
+          </p>
+        </div>
+
+        <div>
+          <p class="uppercase tracking-wide text-white/60 mb-3">Explore</p>
+          <ul class="space-y-2 text-white/85">
+            <li><a href="/about" class="hover:opacity-70 transition">About</a></li>
+            <li><a href="/services" class="hover:opacity-70 transition">Services</a></li>
+            <li><a href="/process" class="hover:opacity-70 transition">Process</a></li>
+            <li><a href="/portfolio" class="hover:opacity-70 transition">Portfolio</a></li>
+            <li><a href="/reviews" class="hover:opacity-70 transition">Reviews</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="uppercase tracking-wide text-white/60 mb-3">Get in touch</p>
+          <ul class="space-y-2 text-white/85">
+            <li>
+              <a href="mailto:christophernoblett.dev@gmail.com" class="hover:opacity-70 transition flex items-center gap-2">
+                <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="2" y="4" width="20" height="16" rx="2" />
+                  <path d="m22 6-10 7L2 6" />
+                </svg>
+                Email
+              </a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/christopher-noblett" target="_blank" rel="noopener" class="hover:opacity-70 transition flex items-center gap-2">
+                <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.55 4.78 5.87V21h-4v-5.6c0-1.34-.03-3.06-1.87-3.06-1.87 0-2.16 1.46-2.16 2.96V21h-4V9Z" />
+                </svg>
+                LinkedIn
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
 
-      <div>
-        <p class="uppercase tracking-wide text-white/60 mb-3">Explore</p>
-        <ul class="space-y-2 text-white/85">
-          <li><a href="/about" class="hover:opacity-70 transition">About</a></li>
-          <li><a href="/services" class="hover:opacity-70 transition">Services</a></li>
-          <li><a href="/process" class="hover:opacity-70 transition">Process</a></li>
-          <li><a href="/portfolio" class="hover:opacity-70 transition">Portfolio</a></li>
-          <li><a href="/reviews" class="hover:opacity-70 transition">Reviews</a></li>
-        </ul>
+      <div class="border-t border-white/10 py-6 text-center text-xs text-white/60 px-6">
+        <p>&copy; {new Date().getFullYear()} Christopher Noblett. All rights reserved.</p>
       </div>
+    </footer>
 
-      <div>
-        <p class="uppercase tracking-wide text-white/60 mb-3">Get in touch</p>
-        <ul class="space-y-2 text-white/85">
-          <li>
-            <a href="mailto:christophernoblett.dev@gmail.com" class="hover:opacity-70 transition flex items-center gap-2">
-              <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
-              Email
-            </a>
-          </li>
-          <li>
-            <a href="https://www.linkedin.com/in/christopher-noblett/" target="_blank" rel="noopener" class="hover:opacity-70 transition flex items-center gap-2">
-              <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.55 4.78 5.87V21h-4v-5.6c0-1.34-.03-3.06-1.87-3.06-1.87 0-2.16 1.46-2.16 2.96V21h-4V9Z"/></svg>
-              LinkedIn
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
+    <script>
+      // Scroll reveal: fade/slide elements with .reveal into view once.
+      const revealEls = document.querySelectorAll<HTMLElement>('.reveal');
 
-    <div class="border-t border-white/10 py-6 text-center text-xs text-white/60 px-6">
-      <p>&copy; {new Date().getFullYear()} Christopher Noblett. All rights reserved.</p>
-    </div>
-  </footer>
+      if (typeof IntersectionObserver !== 'undefined' && revealEls.length) {
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              io.unobserve(entry.target);
+            }
+          });
+        }, {
+          threshold: 0.15,
+          rootMargin: '0px 0px -40px 0px'
+        });
 
-  <script>
-    // Email links: try the device's mail app first. If nothing opens
-    // within a moment (no default mail app configured), fall back to
-    // Gmail's web compose in a new tab, so clicking always does
-    // something visible in a browser.
-    document.querySelectorAll('a[href^="mailto:"]').forEach((link) => {
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-        const address = link.getAttribute('href').replace('mailto:', '').split('?')[0];
-        const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${address}`;
+        revealEls.forEach((el) => io.observe(el));
+      } else {
+        revealEls.forEach((el) => el.classList.add('is-visible'));
+      }
+    </script>
 
-        let handedOff = false;
-        const markHandedOff = () => { handedOff = true; };
-        window.addEventListener('blur', markHandedOff, { once: true });
+    <script>
+      // Email links: try the device's mail app first.
+      // If no mail app is configured, fall back to Gmail in a new tab.
+      document.querySelectorAll<HTMLAnchorElement>('a[href^="mailto:"]').forEach((link) => {
+        link.addEventListener('click', (event) => {
+          event.preventDefault();
 
-        window.location.href = link.getAttribute('href');
+          const href = link.getAttribute('href');
 
-        setTimeout(() => {
-          window.removeEventListener('blur', markHandedOff);
-          if (!handedOff && !document.hidden) {
-            window.open(gmailUrl, '_blank', 'noopener');
+          if (!href) {
+            return;
           }
-        }, 600);
+
+          const address = href.replace('mailto:', '').split('?')[0];
+          const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(address)}`;
+
+          let handedOff = false;
+
+          const markHandedOff = () => {
+            handedOff = true;
+          };
+
+          window.addEventListener('blur', markHandedOff, { once: true });
+
+          window.location.href = href;
+
+          window.setTimeout(() => {
+            window.removeEventListener('blur', markHandedOff);
+
+            if (!handedOff && !document.hidden) {
+              window.open(gmailUrl, '_blank', 'noopener,noreferrer');
+            }
+          }, 600);
+        });
       });
-    });
-  </script>
-</body>
+    </script>
+  </body>
 </html>

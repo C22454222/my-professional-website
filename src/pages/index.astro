@@ -2,23 +2,29 @@
 import Layout from '../layouts/Layout.astro';
 ---
 <Layout title="Home">
-  <section class="min-h-[85vh] flex items-center justify-center px-6 py-20 text-center">
-    <div class="max-w-3xl">
-      <span class="inline-block uppercase tracking-[0.3em] text-xs text-white/70 border border-white/25 rounded-full px-4 py-1.5 mb-8">
-        Web Design &amp; Development
+  <section class="min-h-[85vh] flex items-center justify-center px-6 py-20 text-center relative overflow-hidden">
+    <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-white/10 blur-3xl pointer-events-none"></div>
+    <div class="absolute -bottom-32 -left-24 w-96 h-96 rounded-full bg-white/5 blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-3xl relative reveal">
+      <span class="inline-block uppercase tracking-[0.3em] text-xs text-white/70 border border-white/25 rounded-full px-4 py-1.5 mb-8 glass">
+        Web Design for Clinics
       </span>
       <h1 class="text-4xl md:text-6xl leading-tight mb-8">
-        Affordable, Professional<br class="hidden md:block" /> Websites for Businesses, Clinics &amp; Tradespeople
+        Affordable, Professional<br class="hidden md:block" /> Websites Built for Clinics
       </h1>
       <div class="mx-auto my-8 h-px w-16 bg-white/50"></div>
       <p class="text-lg md:text-xl text-white/85 max-w-2xl mx-auto leading-relaxed mb-10">
-        I build completely customised websites for tradespeople, clinics, local businesses and small brands, without the agency price tag. Based in Dublin, working with clients everywhere. No templates, no bloated packages, just a site designed properly around your business.
+        I build completely customised websites for dental practices, physio and GP clinics, aesthetics
+        studios and wellness clinics, without the agency price tag. Based in Dublin, working with
+        clinics everywhere. No templates, no bloated packages, just a site designed properly around
+        your patients.
       </p>
       <div class="flex flex-wrap gap-4 justify-center">
         <a href="/contact" class="bg-white text-brand-500 px-7 py-3 rounded-full hover:bg-white/90 transition font-medium">
           Get a Free Quote
         </a>
-        <a href="/services" class="border border-white/60 px-7 py-3 rounded-full hover:bg-white/10 transition font-medium">
+        <a href="/services" class="border border-white/60 px-7 py-3 rounded-full hover:bg-white/10 transition font-medium glass-hover">
           View Pricing
         </a>
       </div>
@@ -27,20 +33,20 @@ import Layout from '../layouts/Layout.astro';
 
   <section class="border-t border-white/15">
     <div class="max-w-5xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-12 items-center">
-      <div class="aspect-[4/5] rounded-2xl border border-white/25 overflow-hidden flex items-center justify-center bg-white/5">
-        <img src="/images/studio1.jpeg" alt="Website design mockups on a laptop screen" class="w-full h-full object-cover" />
+      <div class="aspect-[4/5] rounded-2xl border border-white/25 overflow-hidden flex items-center justify-center glass reveal float">
+        <img src="/images/clinic-site-mockup.svg" alt="Mockup of a clinic booking website on a laptop screen" class="w-full h-full object-cover" />
       </div>
-      <div>
+      <div class="reveal reveal-delay-1">
         <p class="uppercase tracking-[0.25em] text-sm text-white/60 mb-4">Why Work With Me</p>
         <h2 class="text-3xl mb-5">Genuinely custom, not just a website</h2>
         <p class="text-white/85 leading-relaxed mb-4">
-          Plenty of people can build you a website. The real difference is a site designed properly
-          around your business, your customers and your goals, built by hand rather than bolted
-          together from a template.
+          Plenty of people can build a clinic a website. The real difference is a site designed
+          properly around your practice, your patients and your booking flow, built by hand rather
+          than bolted together from a template.
         </p>
         <p class="text-white/85 leading-relaxed">
-          Whether you need a simple one-page site or something more sophisticated with bookings
-          and online payments, everything is built around what actually fits your business.
+          Whether you need a simple one-page site or something more sophisticated with appointment
+          bookings and online payments, everything is built around what actually fits your clinic.
         </p>
       </div>
     </div>
@@ -48,19 +54,19 @@ import Layout from '../layouts/Layout.astro';
 
   <section class="bg-white text-brand-500">
     <div class="max-w-6xl mx-auto px-6 py-16">
-      <h2 class="text-3xl text-center mb-14">Who I Work With</h2>
+      <h2 class="text-3xl text-center mb-14 reveal">Clinics I Work With</h2>
       <div class="grid md:grid-cols-3 gap-8">
-        <div class="border border-brand-500/40 rounded-2xl p-8 text-center">
-          <h3 class="text-xl mb-2 font-semibold text-brand-500">Tradespeople</h3>
-          <p class="text-brand-500 text-sm">Plumbers, electricians, builders and landscapers who want to look as good online as their work does in person.</p>
+        <div class="border border-brand-500/40 rounded-2xl p-8 text-center glass-hover reveal">
+          <h3 class="text-xl mb-2 font-semibold text-brand-500">Dental &amp; Physio</h3>
+          <p class="text-brand-500 text-sm">Dental practices and physiotherapy clinics who want an easy booking flow and a site that builds trust before a patient even walks in.</p>
         </div>
-        <div class="border border-brand-500/40 rounded-2xl p-8 text-center">
-          <h3 class="text-xl mb-2 font-semibold text-brand-500">Local Services</h3>
-          <p class="text-brand-500 text-sm">Barbers, beauticians, personal trainers and driving instructors who need bookings, not just a brochure.</p>
+        <div class="border border-brand-500/40 rounded-2xl p-8 text-center glass-hover reveal reveal-delay-1">
+          <h3 class="text-xl mb-2 font-semibold text-brand-500">GP &amp; Wellness Clinics</h3>
+          <p class="text-brand-500 text-sm">GP practices and wellness clinics who need clear service pages, opening hours and contact details patients can actually find.</p>
         </div>
-        <div class="border border-brand-500/40 rounded-2xl p-8 text-center">
-          <h3 class="text-xl mb-2 font-semibold text-brand-500">Small Businesses</h3>
-          <p class="text-brand-500 text-sm">Cafes, consultants, photographers and mechanics who deserve a proper website without agency prices.</p>
+        <div class="border border-brand-500/40 rounded-2xl p-8 text-center glass-hover reveal reveal-delay-2">
+          <h3 class="text-xl mb-2 font-semibold text-brand-500">Aesthetics &amp; Therapy</h3>
+          <p class="text-brand-500 text-sm">Aesthetics studios and therapy clinics who deserve a proper website without agency prices.</p>
         </div>
       </div>
     </div>
