@@ -1,0 +1,34 @@
+---
+import type { Faq } from '../data/site';
+
+interface Props {
+  items: Faq[];
+}
+const { items } = Astro.props;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: items.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+---
+
+<div class="divide-y divide-line border-y border-line">
+  {items.map((f) => (
+    <details class="group">
+      <summary class="flex cursor-pointer list-none items-center justify-between gap-6 py-6 text-left font-display text-[1.35rem] leading-snug md:text-[1.5rem] [&::-webkit-details-marker]:hidden">
+        {f.q}
+        <span class="grid h-9 w-9 flex-none place-items-center rounded-full border border-line transition-transform duration-300 group-open:rotate-45" aria-hidden="true">
+          <svg class="h-4 w-4" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path d="M8 3v10M3 8h10" /></svg>
+        </span>
+      </summary>
+      <p class="max-w-prose pb-7 pr-12 leading-relaxed text-slate">{f.a}</p>
+    </details>
+  ))}
+</div>
+
+<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />

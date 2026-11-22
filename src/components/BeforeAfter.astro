@@ -1,0 +1,240 @@
+---
+import ClinicMock from './ClinicMock.astro';
+---
+
+<figure class="ba-frame">
+  <div class="ba-chrome" aria-hidden="true">
+    <span class="dots"><i></i><i></i><i></i></span>
+    <span class="url">glasmoredental.ie</span>
+    <span class="dots invisible"><i></i><i></i><i></i></span>
+  </div>
+
+  <div class="ba" data-ba style="--pos: 40%">
+    <div class="layer">
+      <ClinicMock variant="old" />
+    </div>
+    <div class="layer after">
+      <ClinicMock variant="new" />
+    </div>
+
+    <span class="tag tag-before" aria-hidden="true">Before</span>
+    <span class="tag tag-after" aria-hidden="true">After</span>
+
+    <input
+      class="range"
+      type="range"
+      min="0"
+      max="100"
+      value="40"
+      aria-label="Compare a dated clinic website with a rebuilt one"
+      aria-valuetext="60% new website"
+    />
+    <div class="handle" aria-hidden="true">
+      <span class="knob">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m9 7-5 5 5 5M15 7l5 5-5 5" />
+        </svg>
+      </span>
+    </div>
+  </div>
+</figure>
+
+<style>
+  .ba-frame {
+    border-radius: 18px;
+    background: #fff;
+    border: 1px solid #d3dfe4;
+    box-shadow:
+      0 1px 0 rgba(15, 43, 58, 0.04),
+      0 40px 80px -40px rgba(15, 43, 58, 0.35);
+    overflow: hidden;
+  }
+  .ba-chrome {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.7rem 1rem;
+    border-bottom: 1px solid #e6eef1;
+    background: #f9fbfc;
+  }
+  .dots {
+    display: flex;
+    gap: 6px;
+  }
+  .dots i {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #d3dfe4;
+  }
+  .url {
+    flex: 0 1 22rem;
+    text-align: center;
+    font-size: 0.8rem;
+    color: #4d6170;
+    background: #eef3f5;
+    border-radius: 99px;
+    padding: 0.3rem 1rem;
+  }
+
+  .ba {
+    position: relative;
+    aspect-ratio: 16 / 9.6;
+    overflow: hidden;
+    user-select: none;
+    touch-action: pan-y;
+  }
+  .layer {
+    position: absolute;
+    inset: 0;
+  }
+  .after {
+    clip-path: inset(0 0 0 var(--pos));
+  }
+
+  .tag {
+    position: absolute;
+    bottom: 1rem;
+    z-index: 2;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 0.3rem 0.75rem;
+    border-radius: 99px;
+    pointer-events: none;
+  }
+  .tag-before {
+    left: 1rem;
+    background: rgba(15, 43, 58, 0.85);
+    color: #fff;
+  }
+  .tag-after {
+    right: 1rem;
+    background: #cfebe1;
+    color: #1d5e4e;
+  }
+
+  .handle {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: var(--pos);
+    width: 2px;
+    margin-left: -1px;
+    background: #fff;
+    box-shadow: 0 0 0 1px rgba(15, 43, 58, 0.15);
+    pointer-events: none;
+    z-index: 3;
+  }
+  .knob {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 46px;
+    height: 46px;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: #fff;
+    color: #0f2b3a;
+    display: grid;
+    place-items: center;
+    box-shadow: 0 6px 20px -6px rgba(15, 43, 58, 0.45);
+    transition: transform 0.2s ease;
+  }
+  .knob svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .range {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    opacity: 0;
+    cursor: ew-resize;
+    z-index: 4;
+  }
+  .range:focus-visible ~ .handle .knob {
+    outline: 3px solid #1d6fb8;
+    outline-offset: 3px;
+  }
+  .ba:hover .knob,
+  .range:active ~ .handle .knob {
+    transform: translate(-50%, -50%) scale(1.08);
+  }
+  @media (max-width: 640px) {
+    .tag {
+      bottom: 0.5rem;
+      font-size: 0.65rem;
+      padding: 0.15rem 0.5rem;
+    }
+    .tag-before {
+      left: 0.5rem;
+    }
+    .tag-after {
+      right: 0.5rem;
+    }
+    .knob {
+      width: 36px;
+      height: 36px;
+    }
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-ba]').forEach((ba) => {
+    const range = ba.querySelector<HTMLInputElement>('input[type="range"]');
+    if (!range) return;
+
+    let touched = false;
+    const set = (v: number) => {
+      ba.style.setProperty('--pos', `${v}%`);
+      range.value = String(Math.round(v));
+      range.setAttribute(
+        'aria-valuetext',
+        v < 15 ? 'Showing the old website' : v > 85 ? 'Showing the new website' : `${Math.round(100 - v)}% new website`,
+      );
+    };
+
+    range.addEventListener('input', () => {
+      touched = true;
+      set(Number(range.value));
+    });
+
+    // One intro move: sweep across so the "after" is revealed, then settle in the middle.
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) return;
+
+    const keyframes = [
+      { at: 0, v: 40 },
+      { at: 900, v: 86 },
+      { at: 2300, v: 14 },
+      { at: 3300, v: 40 },
+    ];
+    const ease = (t: number) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (!entries[0].isIntersecting) return;
+        io.disconnect();
+        const start = performance.now() + 500;
+        const tick = (now: number) => {
+          if (touched) return;
+          const t = now - start;
+          if (t < 0) return requestAnimationFrame(tick);
+          const i = keyframes.findIndex((k) => k.at > t);
+          if (i === -1) return set(40);
+          const a = keyframes[i - 1];
+          const b = keyframes[i];
+          set(a.v + (b.v - a.v) * ease((t - a.at) / (b.at - a.at)));
+          requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      },
+      { threshold: 0.5 },
+    );
+    io.observe(ba);
+  });
+</script>

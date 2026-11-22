@@ -1,0 +1,651 @@
+---
+// Concept site for a fictional clinic. Used as a live demo for prospects. Not indexed by search engines.
+import Base from '../../layouts/Base.astro';
+
+const tooth =
+  'M26 6c-4.6 0-6.4 2.6-10 2.6S10.6 6 7.4 6C3 6 1 10.4 1 15.6c0 6.5 2.4 10.4 3.6 17 .9 5 1.7 13.4 5.3 13.4 3.8 0 3.6-9.8 6.1-9.8s2.3 9.8 6.1 9.8c3.6 0 4.4-8.4 5.3-13.4 1.2-6.6 3.6-10.5 3.6-17C31 10.4 29.6 6 26 6Z';
+
+const treatments = [
+  { name: 'Check-up & exam', price: 'from €70', text: 'A full exam, with x-rays when you need them, and a clear plan in plain English.' },
+  { name: 'Hygiene & cleaning', price: 'from €85', text: 'A gentle scale and polish with our hygienist. Book it alongside your check-up.' },
+  { name: 'Fillings', price: 'from €110', text: 'Tooth-coloured fillings that match your smile, usually done in one visit.' },
+  { name: 'Teeth whitening', price: 'from €350', text: 'Custom trays you use at home, with a check-in visit to see how you’re getting on.' },
+  { name: 'Clear aligners', price: 'from €2,800', text: 'Straighten your teeth without metal braces. Starts with a free consultation.' },
+  { name: 'Dental implants', price: 'Free consult', text: 'A permanent replacement for a missing tooth. We talk you through every step first.' },
+];
+
+const hours = [
+  ['Monday', '8:30 – 6:00'],
+  ['Tuesday', '8:30 – 8:00'],
+  ['Wednesday', '8:30 – 6:00'],
+  ['Thursday', '8:30 – 8:00'],
+  ['Friday', '8:30 – 5:00'],
+  ['Saturday', '9:00 – 1:00'],
+  ['Sunday', 'Closed'],
+];
+---
+
+<Base
+  title="Glasmore Dental (concept site)"
+  description="A concept dental clinic website designed and built by Christopher Noblett. Glasmore Dental is a fictional clinic."
+  noindex
+>
+  <div class="g">
+    <div class="g-banner">
+      <p>
+        Concept site by Christopher Noblett. Glasmore Dental is not a real clinic.
+        <a href="/work">Back to christophernoblett.ie</a>
+      </p>
+    </div>
+
+    <header class="g-head">
+      <div class="g-wrap g-nav">
+        <a href="#top" class="g-logo">Glasmore Dental</a>
+        <nav aria-label="Clinic" class="g-links">
+          <a href="#treatments">Treatments</a>
+          <a href="#new-patients">New patients</a>
+          <a href="#visit">Visit</a>
+        </nav>
+        <a href="#book" class="g-btn g-btn-sm">Book online</a>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="g-wrap g-hero">
+        <div>
+          <span class="g-pill">New patients welcome</span>
+          <h1>Gentle, modern dentistry for the whole family.</h1>
+          <p class="g-lede">
+            Check-ups, hygiene, whitening and implants in the heart of Dublin. Early, late and Saturday appointments,
+            and you can book in under a minute.
+          </p>
+          <div class="g-ctas">
+            <a href="#book" class="g-btn">Book an appointment</a>
+            <a href="tel:+35312345678" class="g-btn g-btn-ghost">Call 01 234 5678</a>
+          </div>
+          <ul class="g-proof">
+            <li>Nervous patients welcome</li>
+            <li>Open Saturdays</li>
+            <li>PRSI and medical card accepted</li>
+          </ul>
+        </div>
+        <div class="g-art" aria-hidden="true">
+          <svg viewBox="0 0 32 48"><path d={tooth} fill="#fff" stroke="#1E4D45" stroke-width="0.7" /></svg>
+          <div class="g-card">
+            <span class="g-dot"></span>
+            <span><b>Next available</b><br />Tomorrow, 10:30</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="treatments" class="g-section g-white">
+        <div class="g-wrap">
+          <div class="g-sec-head">
+            <h2>Treatments and fees</h2>
+            <p>Clear prices up front. Your dentist confirms the cost before any treatment starts.</p>
+          </div>
+          <div class="g-grid">
+            {treatments.map((t) => (
+              <article class="g-treat">
+                <div class="g-treat-top">
+                  <h3>{t.name}</h3>
+                  <span>{t.price}</span>
+                </div>
+                <p>{t.text}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="new-patients" class="g-section">
+        <div class="g-wrap g-split">
+          <div>
+            <h2>Your first visit, made easy</h2>
+            <p class="g-muted">
+              Haven’t been to a dentist in a while? That’s fine. We’ll go at your pace and explain everything before we
+              start.
+            </p>
+          </div>
+          <ol class="g-steps">
+            <li><b>Book online or call</b><span>Pick a time that suits you. You’ll get a confirmation by text.</span></li>
+            <li><b>Fill in your forms</b><span>We send a short medical history form to fill in on your phone before you arrive.</span></li>
+            <li><b>Come in and relax</b><span>A full check-up, a chat about anything that’s bothering you, and a clear plan.</span></li>
+          </ol>
+        </div>
+      </section>
+
+      <section id="visit" class="g-section g-white">
+        <div class="g-wrap g-split">
+          <div>
+            <h2>Visit us</h2>
+            <p class="g-muted">12 Example Street, Dublin 2. A short walk from the Luas, with paid parking nearby.</p>
+            <table class="g-hours">
+              <caption class="sr-only">Opening hours</caption>
+              <tbody>
+                {hours.map(([d, h]) => (
+                  <tr><th scope="row">{d}</th><td>{h}</td></tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <div class="g-map" aria-label="Map placeholder" role="img">
+            <span class="g-pin"></span>
+            <span class="g-map-label">Glasmore Dental</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="book" class="g-section g-book">
+        <div class="g-wrap g-split">
+          <div>
+            <h2>Book an appointment</h2>
+            <p class="g-muted-light">
+              Request a time and we’ll confirm by text within the hour during opening times. In a pain emergency, call
+              us on 01 234 5678.
+            </p>
+          </div>
+          <form class="g-form" data-demo-form>
+            <label>Name<input name="name" required autocomplete="name" /></label>
+            <label>Phone<input name="phone" type="tel" required autocomplete="tel" /></label>
+            <label>
+              What’s it for?
+              <select name="type">
+                <option>Check-up</option>
+                <option>Hygiene</option>
+                <option>Something is hurting</option>
+                <option>Cosmetic consultation</option>
+              </select>
+            </label>
+            <label>
+              Preferred day
+              <select name="day">
+                <option>As soon as possible</option>
+                <option>Weekday morning</option>
+                <option>Weekday evening</option>
+                <option>Saturday</option>
+              </select>
+            </label>
+            <button type="submit" class="g-btn g-btn-light">Request appointment</button>
+            <p role="status" aria-live="polite" class="g-form-status" data-demo-status></p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="g-foot">
+      <div class="g-wrap">
+        <span class="g-logo">Glasmore Dental</span>
+        <p>A concept site designed and built by <a href="/">Christopher Noblett</a>. Want one like this for your clinic? <a href="/contact">Get a free quote</a>.</p>
+      </div>
+    </footer>
+  </div>
+</Base>
+
+<script>
+  document.querySelector<HTMLFormElement>('[data-demo-form]')?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const status = document.querySelector('[data-demo-status]');
+    if (status) {
+      status.textContent =
+        'This is a concept, so nothing was sent. On a real clinic site this request goes straight to reception, or into your booking system.';
+    }
+  });
+</script>
+
+<style>
+  .g {
+    --g-ink: #16332d;
+    --g-green: #1e4d45;
+    --g-mint: #d8efe6;
+    --g-muted: #4a635c;
+    --g-line: #e1e9e5;
+    --g-bg: #fbfcfa;
+    background: var(--g-bg);
+    color: var(--g-ink);
+  }
+  .g h1,
+  .g h2,
+  .g h3 {
+    color: var(--g-ink);
+  }
+  .g-wrap {
+    max-width: 72rem;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  .g-banner {
+    background: #0f2b3a;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.875rem;
+    text-align: center;
+    padding: 0.6rem 1rem;
+  }
+  .g-banner a {
+    color: #fff;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    margin-left: 0.5rem;
+    white-space: nowrap;
+  }
+  .g-head {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: rgba(251, 252, 250, 0.9);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--g-line);
+  }
+  .g-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    height: 4.25rem;
+  }
+  .g-logo {
+    font-family: 'Newsreader Variable', Georgia, serif;
+    font-size: 1.5rem;
+    letter-spacing: -0.02em;
+  }
+  .g-links {
+    display: none;
+    gap: 2rem;
+    color: var(--g-muted);
+  }
+  .g-links a:hover {
+    color: var(--g-ink);
+  }
+  @media (min-width: 768px) {
+    .g-links {
+      display: flex;
+    }
+  }
+  .g-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    background: var(--g-green);
+    color: #fff;
+    font-weight: 600;
+    padding: 0.85rem 1.5rem;
+    transition: background 0.2s;
+  }
+  .g-btn:hover {
+    background: #163b35;
+  }
+  .g-btn-sm {
+    padding: 0.6rem 1.15rem;
+    font-size: 0.95rem;
+  }
+  .g-btn-ghost {
+    background: transparent;
+    color: var(--g-ink);
+    border: 1px solid #c5d6d0;
+  }
+  .g-btn-ghost:hover {
+    background: #fff;
+  }
+  .g-btn-light {
+    background: #fff;
+    color: var(--g-green);
+  }
+  .g-btn-light:hover {
+    background: var(--g-mint);
+  }
+
+  .g-hero {
+    display: grid;
+    gap: 3rem;
+    padding-top: 3.5rem;
+    padding-bottom: 5rem;
+    align-items: center;
+  }
+  @media (min-width: 900px) {
+    .g-hero {
+      grid-template-columns: 1.15fr 0.85fr;
+      padding-top: 5rem;
+      padding-bottom: 6.5rem;
+    }
+  }
+  .g-pill {
+    display: inline-block;
+    background: var(--g-mint);
+    color: var(--g-green);
+    border-radius: 999px;
+    padding: 0.35rem 0.9rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+  .g-hero h1 {
+    font-size: clamp(2.6rem, 1.5rem + 4vw, 4.6rem);
+    line-height: 1.02;
+    letter-spacing: -0.03em;
+    font-weight: 400;
+    margin: 1.25rem 0 1.25rem;
+  }
+  .g-lede {
+    font-size: 1.15rem;
+    line-height: 1.6;
+    color: var(--g-muted);
+    max-width: 34rem;
+  }
+  .g-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 2rem;
+  }
+  .g-proof {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    margin-top: 2.25rem;
+    font-size: 0.95rem;
+    color: var(--g-muted);
+  }
+  .g-proof li::before {
+    content: '';
+    display: inline-block;
+    width: 0.45rem;
+    height: 0.45rem;
+    border-radius: 50%;
+    background: #2f9e78;
+    margin-right: 0.5rem;
+    vertical-align: middle;
+  }
+  .g-art {
+    position: relative;
+    aspect-ratio: 4 / 4.4;
+    border-radius: 2rem;
+    background:
+      radial-gradient(circle at 70% 25%, #fff 0, transparent 45%),
+      linear-gradient(160deg, var(--g-mint), #b9e0d2);
+    display: grid;
+    place-items: center;
+  }
+  .g-art svg {
+    width: 36%;
+    filter: drop-shadow(0 24px 28px rgba(30, 77, 69, 0.25));
+  }
+  .g-card {
+    position: absolute;
+    left: 1rem;
+    bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: #fff;
+    border-radius: 1rem;
+    padding: 0.85rem 1.2rem;
+    line-height: 1.35;
+    box-shadow: 0 18px 40px -18px rgba(22, 51, 45, 0.4);
+  }
+  @media (min-width: 900px) {
+    .g-card {
+      left: -1.75rem;
+    }
+  }
+  .g-dot {
+    width: 0.65rem;
+    height: 0.65rem;
+    border-radius: 50%;
+    background: #2f9e78;
+    box-shadow: 0 0 0 0.3rem var(--g-mint);
+  }
+
+  .g-section {
+    padding: 5rem 0;
+  }
+  @media (min-width: 768px) {
+    .g-section {
+      padding: 6.5rem 0;
+    }
+  }
+  .g-white {
+    background: #fff;
+    border-top: 1px solid var(--g-line);
+    border-bottom: 1px solid var(--g-line);
+  }
+  .g h2 {
+    font-size: clamp(2rem, 1.4rem + 2vw, 2.9rem);
+    line-height: 1.08;
+    letter-spacing: -0.025em;
+  }
+  .g-sec-head {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 3rem;
+  }
+  @media (min-width: 900px) {
+    .g-sec-head {
+      grid-template-columns: 1fr 1fr;
+      align-items: end;
+    }
+  }
+  .g-sec-head p,
+  .g-muted {
+    color: var(--g-muted);
+    font-size: 1.075rem;
+    line-height: 1.6;
+    margin-top: 1rem;
+    max-width: 34rem;
+  }
+  .g-grid {
+    display: grid;
+    gap: 1px;
+    background: var(--g-line);
+    border: 1px solid var(--g-line);
+    border-radius: 1.5rem;
+    overflow: hidden;
+  }
+  @media (min-width: 640px) {
+    .g-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media (min-width: 1000px) {
+    .g-grid {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+  .g-treat {
+    background: #fff;
+    padding: 1.75rem;
+  }
+  .g-treat-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+  }
+  .g-treat h3 {
+    font-size: 1.4rem;
+    line-height: 1.2;
+  }
+  .g-treat-top span {
+    flex: none;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--g-green);
+    background: var(--g-mint);
+    border-radius: 999px;
+    padding: 0.2rem 0.7rem;
+  }
+  .g-treat p {
+    margin-top: 0.75rem;
+    color: var(--g-muted);
+    line-height: 1.55;
+  }
+
+  .g-split {
+    display: grid;
+    gap: 3rem;
+  }
+  @media (min-width: 900px) {
+    .g-split {
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+    }
+  }
+  .g-steps {
+    display: grid;
+    gap: 0;
+    counter-reset: s;
+  }
+  .g-steps li {
+    counter-increment: s;
+    display: grid;
+    grid-template-columns: 3rem 1fr;
+    column-gap: 1rem;
+    padding: 1.5rem 0;
+    border-top: 1px solid var(--g-line);
+  }
+  .g-steps li::before {
+    content: counter(s);
+    grid-row: span 2;
+    font-family: 'Newsreader Variable', Georgia, serif;
+    font-size: 2.2rem;
+    line-height: 1;
+    color: var(--g-green);
+  }
+  .g-steps b {
+    font-size: 1.15rem;
+  }
+  .g-steps span {
+    color: var(--g-muted);
+    margin-top: 0.25rem;
+  }
+
+  .g-hours {
+    margin-top: 2rem;
+    width: 100%;
+    max-width: 24rem;
+    border-collapse: collapse;
+  }
+  .g-hours th,
+  .g-hours td {
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--g-line);
+    text-align: left;
+    font-weight: 400;
+  }
+  .g-hours td {
+    text-align: right;
+    color: var(--g-muted);
+    font-variant-numeric: tabular-nums;
+  }
+  .g-map {
+    position: relative;
+    min-height: 22rem;
+    border-radius: 1.5rem;
+    border: 1px solid var(--g-line);
+    background-color: #eef3ef;
+    background-image:
+      linear-gradient(90deg, transparent 47%, #fff 47%, #fff 53%, transparent 53%),
+      linear-gradient(0deg, transparent 58%, #fff 58%, #fff 63%, transparent 63%),
+      linear-gradient(30deg, transparent 30%, #e2ebe5 30%, #e2ebe5 33%, transparent 33%),
+      repeating-linear-gradient(0deg, transparent 0 3.5rem, #e6ede8 3.5rem 3.6rem),
+      repeating-linear-gradient(90deg, transparent 0 4.5rem, #e6ede8 4.5rem 4.6rem);
+  }
+  .g-pin {
+    position: absolute;
+    left: 50%;
+    top: 46%;
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 50% 50% 50% 0;
+    background: var(--g-green);
+    transform: translate(-50%, -100%) rotate(-45deg);
+    box-shadow: 0 0 0 0.4rem rgba(30, 77, 69, 0.15);
+  }
+  .g-map-label {
+    position: absolute;
+    left: 50%;
+    top: 49%;
+    transform: translateX(-50%);
+    background: #fff;
+    border-radius: 999px;
+    padding: 0.3rem 0.8rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    box-shadow: 0 8px 20px -10px rgba(22, 51, 45, 0.4);
+  }
+
+  .g-book {
+    background: var(--g-green);
+    color: #fff;
+  }
+  .g-book h2 {
+    color: #fff;
+  }
+  .g-muted-light {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 1.075rem;
+    line-height: 1.6;
+    margin-top: 1rem;
+    max-width: 30rem;
+  }
+  .g-form {
+    display: grid;
+    gap: 1rem;
+  }
+  @media (min-width: 640px) {
+    .g-form {
+      grid-template-columns: 1fr 1fr;
+    }
+    .g-form button,
+    .g-form-status {
+      grid-column: span 2;
+    }
+  }
+  .g-form label {
+    display: grid;
+    gap: 0.4rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
+  .g-form input,
+  .g-form select {
+    width: 100%;
+    border-radius: 0.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    padding: 0.75rem 1rem;
+    font: inherit;
+  }
+  .g-form select option {
+    color: var(--g-ink);
+  }
+  .g-form input:focus,
+  .g-form select:focus {
+    outline: none;
+    border-color: #fff;
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.15);
+  }
+  .g-form button {
+    margin-top: 0.5rem;
+  }
+  .g-form-status {
+    min-height: 1.5rem;
+    color: var(--g-mint);
+  }
+  .g-foot {
+    padding: 3rem 0;
+    color: var(--g-muted);
+  }
+  .g-foot .g-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .g-foot a {
+    color: var(--g-green);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+</style>

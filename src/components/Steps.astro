@@ -1,0 +1,49 @@
+---
+// The four stages of a project. Used on the home page (dark) and the process page (light).
+interface Props {
+  dark?: boolean;
+  detailed?: boolean;
+}
+const { dark = false, detailed = false } = Astro.props;
+
+const steps = [
+  {
+    title: 'Free call',
+    time: '15 minutes',
+    text: 'We talk about what you treat, who your patients are and what the site needs to do. You get a fixed quote, usually within a day.',
+    more: 'If you already have a site, I’ll go through it beforehand so we can talk about what’s working and what isn’t.',
+  },
+  {
+    title: 'Design',
+    time: '2 to 4 days',
+    text: 'I design your homepage first so you can see the direction before anything is built. We adjust it until it feels like your clinic.',
+    more: 'You’ll get a private link to look at it on your own phone, not a PDF mockup.',
+  },
+  {
+    title: 'Build',
+    time: '3 to 10 days',
+    text: 'I build the full site by hand: treatment pages, fees, booking and contact details, all fast and easy to use on a phone.',
+    more: 'You review everything on the private link and send changes as a simple list. No technical knowledge needed.',
+  },
+  {
+    title: 'Launch',
+    time: '1 day',
+    text: 'I connect your domain, link your Google Business Profile and make sure Google can find every page. Then it’s live.',
+    more: 'After launch I stay on hand for fixes, and you can add hosting and care if you’d like me to look after it.',
+  },
+];
+---
+
+<ol class:list={['grid gap-px overflow-hidden rounded-3xl md:grid-cols-2 lg:grid-cols-4', dark ? 'bg-white/10' : 'bg-line']}>
+  {steps.map((s, i) => (
+    <li class:list={['flex flex-col p-7 md:p-8', dark ? 'bg-ink' : 'bg-white']}>
+      <div class="flex items-baseline justify-between gap-4">
+        <span class:list={['font-display text-5xl leading-none', dark ? 'text-mint' : 'text-brand-500']}>{i + 1}</span>
+        <span class:list={['text-sm', dark ? 'text-white/55' : 'text-slate']}>{s.time}</span>
+      </div>
+      <h3 class:list={['mt-8 text-2xl', dark && '!text-white']}>{s.title}</h3>
+      <p class:list={['mt-3 text-[0.975rem] leading-relaxed', dark ? 'text-white/75' : 'text-slate']}>{s.text}</p>
+      {detailed && <p class="mt-4 border-t border-line pt-4 text-[0.95rem] leading-relaxed text-slate">{s.more}</p>}
+    </li>
+  ))}
+</ol>

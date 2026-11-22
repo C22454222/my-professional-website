@@ -1,0 +1,67 @@
+---
+import { nav } from '../data/site';
+
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isActive = (href: string) => path === href || path.startsWith(`${href}/`);
+---
+
+<header class="sticky top-0 z-50 border-b border-line/70 bg-enamel/85 backdrop-blur-md">
+  <div class="wrap flex h-16 items-center justify-between gap-6 md:h-[4.5rem]">
+    <a href="/" class="font-display text-[1.4rem] font-medium tracking-tight text-ink" aria-label="Christopher Noblett, home">
+      Christopher Noblett
+    </a>
+
+    <nav aria-label="Main" class="hidden items-center gap-8 text-[0.975rem] md:flex">
+      {nav.map((l) => (
+        <a
+          href={l.href}
+          aria-current={isActive(l.href) ? 'page' : undefined}
+          class:list={[
+            'transition-colors hover:text-ink',
+            isActive(l.href) ? 'text-ink underline decoration-ink/30 underline-offset-[6px]' : 'text-slate',
+          ]}
+        >
+          {l.label}
+        </a>
+      ))}
+      <a href="/contact" class="btn btn-primary !px-5 !py-2.5">Get a free quote</a>
+    </nav>
+
+    <button
+      type="button"
+      class="-mr-2 grid h-11 w-11 place-items-center rounded-full text-ink md:hidden"
+      aria-expanded="false"
+      aria-controls="mobile-nav"
+      data-menu-btn
+    >
+      <span class="sr-only">Menu</span>
+      <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true">
+        <path data-open d="M4 7h16M4 12h16M4 17h16" />
+        <path data-close class="hidden" d="M6 6l12 12M18 6 6 18" />
+      </svg>
+    </button>
+  </div>
+
+  <div id="mobile-nav" class="hidden border-t border-line bg-enamel md:hidden" data-menu>
+    <nav aria-label="Mobile" class="wrap flex flex-col pb-6 pt-2 text-lg">
+      {nav.map((l) => (
+        <a href={l.href} class="border-b border-line py-3.5" aria-current={isActive(l.href) ? 'page' : undefined}>{l.label}</a>
+      ))}
+      <a href="/contact" class="border-b border-line py-3.5" aria-current={isActive('/contact') ? 'page' : undefined}>Contact</a>
+      <a href="/contact" class="btn btn-primary mt-6">Get a free quote</a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const btn = document.querySelector<HTMLButtonElement>('[data-menu-btn]');
+  const menu = document.querySelector<HTMLElement>('[data-menu]');
+
+  btn?.addEventListener('click', () => {
+    const open = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!open));
+    menu?.classList.toggle('hidden', open);
+    btn.querySelector('[data-open]')?.classList.toggle('hidden', !open);
+    btn.querySelector('[data-close]')?.classList.toggle('hidden', open);
+  });
+</script>

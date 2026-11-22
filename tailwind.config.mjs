@@ -1,26 +1,29 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
+  content: ['./src/**/*.{astro,html,js,ts,md,mdx}'],
   theme: {
     extend: {
       colors: {
+        ink: { DEFAULT: '#0F2B3A', soft: '#1C3D4E' },
+        enamel: '#F6F9FA',
+        mist: '#E7F0F3',
+        line: '#D3DFE4',
+        slate: '#4D6170',
         brand: {
-          50: '#eef6fd',
-          100: '#d9ecfa',
-          200: '#b3d8f5',
-          300: '#82bfee',
-          400: '#4b9fe0',
-          500: '#1d78c9',
-          600: '#155fa3',
-          700: '#124c82',
-          800: '#123f69',
-          900: '#123457',
+          50: '#EAF3FB',
+          100: '#D4E7F7',
+          300: '#7FB3E2',
+          500: '#1D6FB8',
+          600: '#175C9A',
+          700: '#124A7D',
         },
+        mint: { DEFAULT: '#CFEBE1', ink: '#1D5E4E' },
       },
       fontFamily: {
-        display: ['"Cormorant Garamond"', 'serif'],
-        body: ['"Inter"', 'sans-serif'],
+        display: ['"Newsreader Variable"', 'Georgia', 'serif'],
+        body: ['"Hanken Grotesk Variable"', 'system-ui', 'sans-serif'],
       },
+      maxWidth: { prose: '62ch' },
     },
   },
   plugins: [],

@@ -1,0 +1,81 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import ClinicMock from '../../components/ClinicMock.astro';
+import CallToAction from '../../components/CallToAction.astro';
+
+const other = [
+  {
+    name: 'NewsScope',
+    year: '2026',
+    text: 'An Android news app that highlights bias in articles and tailors recommendations to each reader. I built the whole system: the app, the backend and the machine learning models.',
+  },
+  {
+    name: 'CalPAL',
+    year: '2024',
+    text: 'A Kotlin productivity app with scheduling, location tracking, notifications and secure login.',
+  },
+];
+---
+
+<Layout
+  title="Work"
+  description="See what a modern dental clinic website can look like. A full concept site for a Dublin clinic, plus other software projects by Christopher Noblett."
+>
+  <PageHeader
+    title="Work"
+    intro="The best way to judge a website is to use one. Here’s a full concept site for a dental clinic, built the same way I’d build yours."
+  />
+
+  <section class="section pt-14 md:pt-20">
+    <div class="wrap">
+      <a href="/work/glasmore-dental" class="group block">
+        <div class="overflow-hidden rounded-[18px] border border-line bg-white shadow-[0_40px_80px_-40px_rgba(15,43,58,0.35)] transition-transform duration-500 group-hover:-translate-y-1">
+          <div class="flex items-center gap-3 border-b border-[#e6eef1] bg-[#f9fbfc] px-4 py-3" aria-hidden="true">
+            <span class="flex gap-1.5"><i class="h-2.5 w-2.5 rounded-full bg-line"></i><i class="h-2.5 w-2.5 rounded-full bg-line"></i><i class="h-2.5 w-2.5 rounded-full bg-line"></i></span>
+            <span class="mx-auto rounded-full bg-[#eef3f5] px-4 py-1 text-xs text-slate">glasmoredental.ie</span>
+          </div>
+          <div class="aspect-[16/9.6]">
+            <ClinicMock variant="new" />
+          </div>
+        </div>
+        <div class="mt-8 grid gap-6 md:grid-cols-12">
+          <div class="md:col-span-5">
+            <p class="text-sm text-slate">Concept site, dental clinic</p>
+            <h2 class="mt-1 text-[2rem] leading-tight">Glasmore Dental</h2>
+          </div>
+          <div class="md:col-span-7">
+            <p class="leading-relaxed text-slate">
+              A complete homepage for a fictional family practice: treatments with clear fees, a booking flow that
+              works in one tap, opening hours, directions and a new patient section. Open it on your phone to see
+              how it feels for a patient.
+            </p>
+            <span class="link mt-4 inline-block">Open the concept site</span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <section class="section border-t border-line bg-white">
+    <div class="wrap grid gap-12 lg:grid-cols-12">
+      <div class="lg:col-span-4">
+        <h2 class="h-section">Other things I’ve built</h2>
+        <p class="mt-5 text-slate">Software projects outside client work, from mobile apps to machine learning.</p>
+      </div>
+      <div class="lg:col-span-7 lg:col-start-6">
+        {other.map((o) => (
+          <div class="flex flex-col gap-2 border-t border-line py-7 sm:flex-row sm:gap-10">
+            <div class="sm:w-40 sm:flex-none">
+              <h3 class="text-[1.5rem] leading-tight">{o.name}</h3>
+              <p class="text-sm text-slate">{o.year}</p>
+            </div>
+            <p class="leading-relaxed text-slate">{o.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CallToAction title="Your clinic could be next" />
+</Layout>

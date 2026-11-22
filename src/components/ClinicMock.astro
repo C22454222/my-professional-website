@@ -1,0 +1,343 @@
+---
+// A scaled-down clinic homepage drawn in HTML. "old" is a typical dated site, "new" is the rebuild.
+// Everything is sized in em off a cqw base, so it scales with whatever box it sits in.
+interface Props {
+  variant: 'old' | 'new';
+}
+const { variant } = Astro.props;
+
+const tooth =
+  'M26 6c-4.6 0-6.4 2.6-10 2.6S10.6 6 7.4 6C3 6 1 10.4 1 15.6c0 6.5 2.4 10.4 3.6 17 .9 5 1.7 13.4 5.3 13.4 3.8 0 3.6-9.8 6.1-9.8s2.3 9.8 6.1 9.8c3.6 0 4.4-8.4 5.3-13.4 1.2-6.6 3.6-10.5 3.6-17C31 10.4 29.6 6 26 6Z';
+---
+
+<div class="mock" aria-hidden="true">
+  {variant === 'old' ? (
+    <div class="m m-old">
+      <div class="o-page">
+        <div class="o-top">
+          <svg class="o-logo" viewBox="0 0 32 48"><path d={tooth} fill="#fff" stroke="#123" stroke-width="1.5" /></svg>
+          <div>
+            <div class="o-title">Glasmore Dental Surgery</div>
+            <div class="o-tag">~ Quality Dental Care Since 1998 ~</div>
+          </div>
+        </div>
+        <div class="o-nav">
+          <u>Home</u> | <u>About Us</u> | <u>Our Services</u> | <u>Fees</u> | <u>Contact Us</u> | <u>Links</u>
+        </div>
+        <div class="o-body">
+          <div class="o-side">
+            <div class="o-box">
+              <b>Opening Hours</b><br />Mon-Thu 9.00-5.30<br />Fri 9.00-4.00<br />Sat CLOSED<br /><br />
+              <b>Tel:</b> 01 234 5678<br /><b>Fax:</b> 01 234 5679
+            </div>
+            <div class="o-counter">Visitors: 004213</div>
+          </div>
+          <div class="o-main">
+            <div class="o-h">Welcome to our Website!!</div>
+            <p class="o-p">
+              Glasmore Dental Surgery is a long established practice offering a full range of general and cosmetic
+              dental treatments to patients of all ages in a friendly and relaxed environment. Our experienced team
+              is committed to the highest standards of care. New patients are always welcome, please telephone the
+              surgery during opening hours to make an appointment with reception.
+            </p>
+            <div class="o-img">image1.jpg</div>
+            <p class="o-link">Click here to download our Price List (PDF, 2.4MB)</p>
+            <p class="o-small">Site last updated 14/03/2011 &nbsp; Best viewed in Internet Explorer 8</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  ) : (
+    <div class="m m-new">
+      <div class="n-nav">
+        <span class="n-logo">Glasmore Dental</span>
+        <span class="n-links"><span>Treatments</span><span>Fees</span><span>Team</span><span>Visit</span></span>
+        <span class="n-book">Book online</span>
+      </div>
+      <div class="n-hero">
+        <div class="n-art">
+          <svg class="n-tooth" viewBox="0 0 32 48"><path d={tooth} fill="#fff" stroke="#1E4D45" stroke-width="0.9" /></svg>
+          <div class="n-card">
+            <span class="n-dot"></span>
+            <span><b>Next available</b><br />Tomorrow, 10:30</span>
+          </div>
+        </div>
+        <div>
+          <span class="n-pill">New patients welcome</span>
+          <div class="n-h">Gentle, modern dentistry for the whole family.</div>
+          <div class="n-p">Check-ups, hygiene, whitening and implants in the heart of Dublin. Book in under a minute.</div>
+          <div class="n-ctas">
+            <span class="n-btn">Book an appointment</span>
+            <span class="n-btn2">Call 01 234 5678</span>
+          </div>
+        </div>
+      </div>
+      <div class="n-row">
+        <div><b>Check-up</b><span>from €70</span></div>
+        <div><b>Hygiene</b><span>from €85</span></div>
+        <div><b>Whitening</b><span>from €350</span></div>
+        <div><b>Implants</b><span>Free consult</span></div>
+      </div>
+    </div>
+  )}
+</div>
+
+<style>
+  .mock {
+    container-type: inline-size;
+    width: 100%;
+    height: 100%;
+  }
+  .m {
+    height: 100%;
+    font-size: 1.55cqw;
+    line-height: 1.35;
+    overflow: hidden;
+  }
+
+  /* ---------- before ---------- */
+  .m-old {
+    background: linear-gradient(#e4e4e4, #c9c9c9);
+    font-family: 'Times New Roman', Times, serif;
+    color: #222;
+    padding: 1.6em 2.4em;
+  }
+  .o-page {
+    background: #fff;
+    border: 1px solid #8a8a8a;
+    height: 100%;
+    box-shadow: 0.3em 0.3em 0 #a9a9a9;
+    overflow: hidden;
+  }
+  .o-top {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    padding: 1em 1.4em;
+    background: linear-gradient(#4a80b8, #1f4a7a);
+    color: #fff;
+  }
+  .o-logo {
+    width: 2.6em;
+    height: 3.6em;
+  }
+  .o-title {
+    font-size: 2.4em;
+    font-weight: bold;
+    font-style: italic;
+    text-shadow: 0.06em 0.06em 0 #000;
+    line-height: 1.1;
+  }
+  .o-tag {
+    font-family: 'Comic Sans MS', 'Comic Sans', 'Chalkboard SE', cursive;
+    color: #ffe970;
+    font-size: 1.1em;
+  }
+  .o-nav {
+    background: #dcdcdc;
+    border-bottom: 1px solid #8a8a8a;
+    padding: 0.45em 1.4em;
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 0.95em;
+    color: #333;
+  }
+  .o-nav u {
+    color: #0000ee;
+  }
+  .o-body {
+    display: grid;
+    grid-template-columns: 27% 1fr;
+    gap: 1.4em;
+    padding: 1.3em 1.4em;
+  }
+  .o-box {
+    border: 1px dashed #888;
+    background: #ffffd6;
+    padding: 0.7em;
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 0.82em;
+    line-height: 1.45;
+  }
+  .o-counter {
+    margin-top: 1em;
+    display: inline-block;
+    font-family: 'Courier New', monospace;
+    background: #000;
+    color: #39ff14;
+    padding: 0.2em 0.5em;
+    font-size: 0.85em;
+  }
+  .o-h {
+    font-family: 'Comic Sans MS', 'Comic Sans', 'Chalkboard SE', cursive;
+    color: #c00000;
+    font-size: 1.9em;
+    text-align: center;
+    margin-bottom: 0.4em;
+  }
+  .o-p {
+    font-size: 0.95em;
+    text-align: justify;
+    line-height: 1.3;
+  }
+  .o-img {
+    margin: 0.9em auto;
+    width: 70%;
+    height: 7.5em;
+    display: grid;
+    place-items: center;
+    border: 1px solid #999;
+    background: repeating-linear-gradient(45deg, #ddd 0 0.6em, #cfcfcf 0.6em 1.2em);
+    font-family: Arial, sans-serif;
+    font-size: 0.85em;
+    color: #666;
+  }
+  .o-link {
+    color: #0000ee;
+    text-decoration: underline;
+    text-align: center;
+    font-size: 0.95em;
+  }
+  .o-small {
+    margin-top: 0.8em;
+    text-align: center;
+    font-size: 0.75em;
+    color: #777;
+  }
+
+  /* ---------- after ---------- */
+  .m-new {
+    background: #fbfcfa;
+    color: #16332d;
+    font-family: 'Hanken Grotesk Variable', system-ui, sans-serif;
+    display: flex;
+    flex-direction: column;
+  }
+  .n-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.7em 2.8em;
+  }
+  .n-logo {
+    font-family: 'Newsreader Variable', Georgia, serif;
+    font-size: 1.8em;
+    letter-spacing: -0.02em;
+  }
+  .n-links {
+    display: flex;
+    gap: 2.2em;
+    font-size: 1em;
+    color: #4a635c;
+  }
+  .n-book {
+    background: #1e4d45;
+    color: #fff;
+    border-radius: 99em;
+    padding: 0.65em 1.4em;
+    font-size: 0.95em;
+    font-weight: 600;
+  }
+  .n-hero {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 0.72fr 1.2fr;
+    gap: 3.2em;
+    align-items: center;
+    padding: 0.5em 2.8em 2.2em;
+  }
+  .n-pill {
+    display: inline-block;
+    background: #d8efe6;
+    color: #1e4d45;
+    border-radius: 99em;
+    padding: 0.35em 1em;
+    font-size: 0.9em;
+    font-weight: 600;
+  }
+  .n-h {
+    font-family: 'Newsreader Variable', Georgia, serif;
+    font-size: 3.7em;
+    line-height: 1.02;
+    letter-spacing: -0.03em;
+    margin: 0.35em 0 0.4em;
+  }
+  .n-p {
+    font-size: 1.15em;
+    line-height: 1.45;
+    color: #4a635c;
+    max-width: 28em;
+  }
+  .n-ctas {
+    display: flex;
+    gap: 0.8em;
+    margin-top: 1.6em;
+  }
+  .n-btn,
+  .n-btn2 {
+    border-radius: 99em;
+    padding: 0.8em 1.5em;
+    font-size: 1em;
+    font-weight: 600;
+  }
+  .n-btn {
+    background: #1e4d45;
+    color: #fff;
+  }
+  .n-btn2 {
+    border: 1px solid #c5d6d0;
+  }
+  .n-art {
+    position: relative;
+    height: 100%;
+    min-height: 14em;
+    border-radius: 1.6em;
+    background:
+      radial-gradient(circle at 70% 25%, #ffffff 0, transparent 45%),
+      linear-gradient(160deg, #d8efe6, #b9e0d2);
+    display: grid;
+    place-items: center;
+  }
+  .n-tooth {
+    width: 38%;
+    filter: drop-shadow(0 1.2em 1.4em rgba(30, 77, 69, 0.25));
+  }
+  .n-card {
+    position: absolute;
+    right: -1.8em;
+    bottom: 2em;
+    display: flex;
+    align-items: center;
+    gap: 0.7em;
+    background: #fff;
+    border-radius: 1em;
+    padding: 0.8em 1.2em;
+    font-size: 0.95em;
+    line-height: 1.3;
+    box-shadow: 0 1em 2.4em -1em rgba(22, 51, 45, 0.35);
+  }
+  .n-dot {
+    width: 0.7em;
+    height: 0.7em;
+    border-radius: 50%;
+    background: #2f9e78;
+    box-shadow: 0 0 0 0.3em #d8efe6;
+  }
+  .n-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid #e1e9e5;
+  }
+  .n-row div {
+    display: flex;
+    flex-direction: column;
+    padding: 1.2em 2.8em;
+    font-size: 1em;
+  }
+  .n-row div + div {
+    border-left: 1px solid #e1e9e5;
+  }
+  .n-row span {
+    color: #4a635c;
+    font-size: 0.92em;
+  }
+</style>

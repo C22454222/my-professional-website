@@ -1,7 +1,13 @@
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
+import sitemap from '@astrojs/sitemap';
+
+const hidden = ['/reviews', '/work/glasmore-dental', '/404'];
 
 export default defineConfig({
-  integrations: [tailwind()],
-  site: 'https://yourdomain.com', // change once you buy your domain
+  site: 'https://christophernoblett.ie',
+  integrations: [
+    tailwind({ applyBaseStyles: false }),
+    sitemap({ filter: (page) => !hidden.some((p) => page.includes(p)) }),
+  ],
 });

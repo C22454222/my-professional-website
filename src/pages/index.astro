@@ -1,74 +1,187 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import BeforeAfter from '../components/BeforeAfter.astro';
+import Pricing from '../components/Pricing.astro';
+import Steps from '../components/Steps.astro';
+import Faq from '../components/Faq.astro';
+import ContactForm from '../components/ContactForm.astro';
+import Reviews from '../components/Reviews.astro';
+import { faqs, site } from '../data/site';
+
+const problems = [
+  {
+    title: 'It’s hard to use on a phone',
+    text: 'Most patients look you up on their phone. If the text is tiny or the menu breaks, they go back to Google and pick the next clinic.',
+  },
+  {
+    title: 'It makes the clinic look dated',
+    text: 'People judge the care by the website before they ever meet you. A tired site makes a modern practice look tired too.',
+  },
+  {
+    title: 'Booking takes too many steps',
+    text: 'Your phone number and a booking button should be one tap away on every page, not buried at the bottom of a contact page.',
+  },
+  {
+    title: 'Google can’t make sense of it',
+    text: 'Clear treatment pages and a linked Google Business Profile help you show up when someone nearby searches for a dentist.',
+  },
+];
 ---
-<Layout title="Home">
-  <section class="min-h-[85vh] flex items-center justify-center px-6 py-20 text-center relative overflow-hidden">
-    <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-white/10 blur-3xl pointer-events-none"></div>
-    <div class="absolute -bottom-32 -left-24 w-96 h-96 rounded-full bg-white/5 blur-3xl pointer-events-none"></div>
 
-    <div class="max-w-3xl relative reveal">
-      <span class="inline-block uppercase tracking-[0.3em] text-xs text-white/70 border border-white/25 rounded-full px-4 py-1.5 mb-8 glass">
-        Web Design for Clinics
-      </span>
-      <h1 class="text-4xl md:text-6xl leading-tight mb-8">
-        Affordable, Professional<br class="hidden md:block" /> Websites Built for Clinics
-      </h1>
-      <div class="mx-auto my-8 h-px w-16 bg-white/50"></div>
-      <p class="text-lg md:text-xl text-white/85 max-w-2xl mx-auto leading-relaxed mb-10">
-        I build completely customised websites for dental practices, physio and GP clinics, aesthetics
-        studios and wellness clinics, without the agency price tag. Based in Dublin, working with
-        clinics everywhere. No templates, no bloated packages, just a site designed properly around
-        your patients.
-      </p>
-      <div class="flex flex-wrap gap-4 justify-center">
-        <a href="/contact" class="bg-white text-brand-500 px-7 py-3 rounded-full hover:bg-white/90 transition font-medium">
-          Get a Free Quote
-        </a>
-        <a href="/services" class="border border-white/60 px-7 py-3 rounded-full hover:bg-white/10 transition font-medium glass-hover">
-          View Pricing
-        </a>
+<Layout>
+  <!-- Hero -->
+  <section class="overflow-hidden pb-16 pt-12 md:pb-24 md:pt-20">
+    <div class="wrap">
+      <div class="grid items-end gap-8 lg:grid-cols-12 lg:gap-12">
+        <h1 class="h-display hero-in lg:col-span-7">Websites for dental clinics in Dublin.</h1>
+        <div class="hero-in hero-in-2 lg:col-span-5 lg:pb-2">
+          <p class="lede">
+            I design and build custom websites for dental practices. Fast on phones, easy to book from,
+            and priced for independent clinics. From €250, live in about a week.
+          </p>
+          <div class="mt-7 flex flex-wrap gap-3">
+            <a href="/contact" class="btn btn-primary">Get a free quote</a>
+            <a href="#free-review" class="btn btn-secondary">Review my current site</a>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
 
-  <section class="border-t border-white/15">
-    <div class="max-w-5xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-12 items-center">
-      <div class="aspect-[4/5] rounded-2xl border border-white/25 overflow-hidden flex items-center justify-center glass reveal float">
-        <img src="/images/clinic-site-mockup.svg" alt="Mockup of a clinic booking website on a laptop screen" class="w-full h-full object-cover" />
-      </div>
-      <div class="reveal reveal-delay-1">
-        <p class="uppercase tracking-[0.25em] text-sm text-white/60 mb-4">Why Work With Me</p>
-        <h2 class="text-3xl mb-5">Genuinely custom, not just a website</h2>
-        <p class="text-white/85 leading-relaxed mb-4">
-          Plenty of people can build a clinic a website. The real difference is a site designed
-          properly around your practice, your patients and your booking flow, built by hand rather
-          than bolted together from a template.
-        </p>
-        <p class="text-white/85 leading-relaxed">
-          Whether you need a simple one-page site or something more sophisticated with appointment
-          bookings and online payments, everything is built around what actually fits your clinic.
+      <div class="hero-in hero-in-3 mt-12 md:mt-16">
+        <BeforeAfter />
+        <p class="mt-4 text-sm text-slate">
+          Drag the slider. Same clinic, same information, rebuilt for how patients actually look for a dentist.
+          <span class="whitespace-nowrap">Glasmore Dental is a concept, <a href="/work/glasmore-dental" class="link font-medium">see the full site</a>.</span>
         </p>
       </div>
     </div>
   </section>
 
-  <section class="bg-white text-brand-500">
-    <div class="max-w-6xl mx-auto px-6 py-16">
-      <h2 class="text-3xl text-center mb-14 reveal">Clinics I Work With</h2>
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="border border-brand-500/40 rounded-2xl p-8 text-center glass-hover reveal">
-          <h3 class="text-xl mb-2 font-semibold text-brand-500">Dental &amp; Physio</h3>
-          <p class="text-brand-500 text-sm">Dental practices and physiotherapy clinics who want an easy booking flow and a site that builds trust before a patient even walks in.</p>
+  <!-- Problems -->
+  <section class="section border-t border-line bg-white">
+    <div class="wrap grid gap-12 lg:grid-cols-12">
+      <div class="lg:col-span-4">
+        <h2 class="h-section">Where most clinic websites lose patients</h2>
+        <p class="mt-5 text-slate">
+          A lot of Dublin practices are still running sites built ten years ago. They usually fail in the same four ways.
+        </p>
+      </div>
+      <div class="grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:col-span-7 lg:col-start-6">
+        {problems.map((p) => (
+          <div class="border-t-2 border-ink pt-5">
+            <h3 class="text-[1.5rem] leading-tight">{p.title}</h3>
+            <p class="mt-3 leading-relaxed text-slate">{p.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="section">
+    <div class="wrap">
+      <div class="mb-12 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+        <div>
+          <h2 class="h-section max-w-xl">Clear prices, agreed before we start</h2>
+          <p class="lede mt-5">Agency quality without the agency invoice. You deal with one person and pay one fixed price.</p>
         </div>
-        <div class="border border-brand-500/40 rounded-2xl p-8 text-center glass-hover reveal reveal-delay-1">
-          <h3 class="text-xl mb-2 font-semibold text-brand-500">GP &amp; Wellness Clinics</h3>
-          <p class="text-brand-500 text-sm">GP practices and wellness clinics who need clear service pages, opening hours and contact details patients can actually find.</p>
-        </div>
-        <div class="border border-brand-500/40 rounded-2xl p-8 text-center glass-hover reveal reveal-delay-2">
-          <h3 class="text-xl mb-2 font-semibold text-brand-500">Aesthetics &amp; Therapy</h3>
-          <p class="text-brand-500 text-sm">Aesthetics studios and therapy clinics who deserve a proper website without agency prices.</p>
-        </div>
+        <a href="/services" class="link flex-none">Everything that’s included</a>
+      </div>
+      <Pricing />
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section class="section bg-ink text-white">
+    <div class="wrap">
+      <div class="mb-12 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+        <h2 class="h-section max-w-xl !text-white">From first call to live site in about a week</h2>
+        <a href="/process" class="flex-none font-semibold text-mint underline decoration-mint/40 underline-offset-4 hover:decoration-mint">How a project works</a>
+      </div>
+      <Steps dark />
+    </div>
+  </section>
+
+  <!-- Who you'll work with -->
+  <section class="section bg-white">
+    <div class="wrap grid items-center gap-10 md:grid-cols-12">
+      <div class="md:col-span-4 lg:col-span-3">
+        <img
+          src="/images/headshot.jpg"
+          alt="Christopher Noblett"
+          width="400"
+          height="400"
+          loading="lazy"
+          class="aspect-square w-48 rounded-3xl object-cover md:w-full"
+        />
+      </div>
+      <div class="md:col-span-8 lg:col-span-7 lg:col-start-5">
+        <h2 class="h-section">You deal with me, start to finish</h2>
+        <p class="lede mt-5">
+          I’m Christopher, a Dublin web developer with a first class honours degree in Computer Science from
+          TU Dublin. No account managers and no handoffs. The person you talk to on the first call is the person
+          who designs and builds your site.
+        </p>
+        <a href="/about" class="link mt-6 inline-block">More about me</a>
+      </div>
+    </div>
+  </section>
+
+  <Reviews />
+
+  <!-- FAQ -->
+  <section class="section">
+    <div class="wrap grid gap-12 lg:grid-cols-12">
+      <div class="lg:col-span-4">
+        <h2 class="h-section">Questions clinics ask</h2>
+        <p class="mt-5 text-slate">
+          Something else on your mind? <a href="/contact" class="link">Ask me directly</a>.
+        </p>
+      </div>
+      <div class="lg:col-span-8">
+        <Faq items={faqs} />
+      </div>
+    </div>
+  </section>
+
+  <!-- Free review + form -->
+  <section id="free-review" class="section border-t border-line bg-mist">
+    <div class="wrap grid gap-12 lg:grid-cols-12">
+      <div class="lg:col-span-5">
+        <h2 class="h-section">Not sure your site needs work? Send me the link.</h2>
+        <p class="lede mt-5">
+          I’ll look at it on a phone and a laptop and send you a short, honest review: what’s working, what’s
+          costing you patients, and what I’d fix first. It’s free and there’s no obligation.
+        </p>
+        <p class="mt-8 text-slate">
+          Or call me on <a href={site.phoneHref} class="link whitespace-nowrap">{site.phone}</a>, or email
+          <a href={`mailto:${site.email}`} class="link break-all">{site.email}</a>
+        </p>
+      </div>
+      <div class="rounded-3xl border border-line bg-white p-6 sm:p-8 lg:col-span-7">
+        <ContactForm id="home-form" reviewChecked />
       </div>
     </div>
   </section>
 </Layout>
+
+<style>
+  .hero-in {
+    animation: rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+  .hero-in-2 {
+    animation-delay: 0.12s;
+  }
+  .hero-in-3 {
+    animation-delay: 0.24s;
+  }
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+</style>

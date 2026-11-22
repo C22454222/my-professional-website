@@ -1,132 +1,103 @@
 ---
+// Not in the menu. Send this link to clients after a project: christophernoblett.ie/reviews
+// Approved reviews go into the `reviews` list in src/data/site.ts.
 import Layout from '../layouts/Layout.astro';
-
-const WEB3FORMS_ACCESS_KEY = "b1dec726-cbf5-4a4b-a49c-82e2251eb72e";
-
-const reviews = [
-  { name: 'Client Name', rating: 5, text: 'Placeholder testimonial: replace with a real review.' },
-  { name: 'Client Name', rating: 5, text: 'Placeholder testimonial: replace with a real review.' },
-  { name: 'Client Name', rating: 5, text: 'Placeholder testimonial: replace with a real review.' },
-];
+import Reviews from '../components/Reviews.astro';
+import { site } from '../data/site';
 ---
 
-<Layout title="Reviews">
-  <section class="max-w-3xl mx-auto px-6 pt-24 pb-14 text-center">
-    <p class="uppercase tracking-[0.25em] text-sm text-white/60 mb-4">Reviews</p>
-    <h1 class="text-4xl mb-6">Share Your Experience</h1>
-    <p class="text-white/85">
-      Leave a review, and once it's checked, it can be published on this page.
-    </p>
-  </section>
+<Layout title="Leave a Review" noindex>
+  <section class="pb-20 pt-14 md:pb-28 md:pt-24">
+    <div class="wrap grid gap-14 lg:grid-cols-12">
+      <div class="lg:col-span-5">
+        <h1 class="h-display">Leave a review</h1>
+        <p class="lede mt-6">
+          Thanks for working with me. A few honest sentences about the project help other clinics decide. I read
+          every review before it goes on the site.
+        </p>
+      </div>
+      <div class="lg:col-span-7">
+        <form class="space-y-5 rounded-3xl border border-line bg-white p-6 sm:p-9" data-web3form data-success="Review sent. Thank you, it means a lot." novalidate>
+          <input type="hidden" name="access_key" value={site.web3formsKey} />
+          <input type="hidden" name="subject" value="New review from christophernoblett.ie" />
+          <input type="hidden" name="from_name" value="christophernoblett.ie reviews" />
+          <input type="checkbox" name="botcheck" class="hidden" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
-  <!-- Leave a review FIRST -->
-  <section>
-    <div class="max-w-xl mx-auto px-6 py-20">
-      <h2 class="text-2xl mb-3 text-center">Leave a Review</h2>
-      <p class="text-white/70 text-sm text-center mb-8">
-        Submitted reviews are checked before they're published.
-      </p>
-
-      <form id="review-form" class="space-y-4">
-        <input type="hidden" name="access_key" value={WEB3FORMS_ACCESS_KEY} />
-        <input type="hidden" name="subject" value="New review submitted on Christopher Noblett website" />
-        <input type="hidden" name="from_name" value="Christopher Noblett Reviews" />
-        <input type="checkbox" name="botcheck" class="hidden" tabindex="-1" autocomplete="off" />
-
-        <input
-          type="text"
-          name="name"
-          placeholder="Your name"
-          required
-          class="w-full border border-white/25 bg-white/5 rounded-lg px-4 py-2 text-white placeholder-white/50"
-        />
-        <select
-          name="rating"
-          required
-          class="w-full border border-white/25 bg-white/5 rounded-lg px-4 py-2 text-white"
-        >
-          <option value="" class="text-brand-500">Rating</option>
-          <option value="5" class="text-brand-500">★★★★★</option>
-          <option value="4" class="text-brand-500">★★★★</option>
-          <option value="3" class="text-brand-500">★★★</option>
-          <option value="2" class="text-brand-500">★★</option>
-          <option value="1" class="text-brand-500">★</option>
-        </select>
-        <textarea
-          name="message"
-          placeholder="Your review"
-          rows="5"
-          required
-          class="w-full border border-white/25 bg-white/5 rounded-lg px-4 py-2 text-white placeholder-white/50"
-        ></textarea>
-        <button
-          type="submit"
-          class="w-full bg-white text-brand-500 py-2 rounded-full hover:bg-white/90 transition font-medium"
-        >
-          Submit Review
-        </button>
-        <p id="review-status" role="status" class="text-sm text-center min-h-[1.2rem]"></p>
-      </form>
-    </div>
-  </section>
-
-  <!-- Testimonials AFTER the form -->
-  <section class="bg-white text-brand-500">
-    <div class="max-w-5xl mx-auto px-6 py-20">
-      <h2 class="text-3xl text-center mb-10">What Clients Say</h2>
-      <div class="grid md:grid-cols-3 gap-6">
-        {reviews.map((r) => (
-          <div class="border border-brand-500/25 rounded-2xl p-7">
-            <div class="text-brand-500 mb-3">
-              {'★'.repeat(r.rating)}
-              {'☆'.repeat(5 - r.rating)}
+          <div class="grid gap-5 sm:grid-cols-2">
+            <div>
+              <label class="label" for="r-name">Your name</label>
+              <input class="field" id="r-name" name="name" type="text" autocomplete="name" required />
             </div>
-            <p class="text-brand-500/85 text-sm leading-relaxed mb-4">
-              "{r.text}"
-            </p>
-            <p class="text-brand-500/70 text-sm">By {r.name}</p>
+            <div>
+              <label class="label" for="r-clinic">Clinic</label>
+              <input class="field" id="r-clinic" name="clinic" type="text" autocomplete="organization" />
+            </div>
           </div>
-        ))}
+
+          <fieldset>
+            <legend class="label">Rating</legend>
+            <div class="flex flex-row-reverse justify-end gap-1" data-stars>
+              {[5, 4, 3, 2, 1].map((n) => (
+                <>
+                  <input class="peer sr-only" type="radio" id={`star-${n}`} name="rating" value={n} required />
+                  <label for={`star-${n}`} class="cursor-pointer text-3xl leading-none text-line transition-colors hover:text-brand-500 peer-checked:text-brand-500 peer-hover:text-brand-500 peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-brand-500" title={`${n} out of 5`}>
+                    <span aria-hidden="true">★</span><span class="sr-only">{n} out of 5</span>
+                  </label>
+                </>
+              ))}
+            </div>
+          </fieldset>
+
+          <div>
+            <label class="label" for="r-message">Your review</label>
+            <textarea class="field min-h-[8rem]" id="r-message" name="message" rows="5" required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary sm:min-w-[12rem]">Send review</button>
+          <p data-status role="status" aria-live="polite" class="min-h-[1.5rem] text-[0.975rem] font-medium data-[state=error]:text-red-700 data-[state=ok]:text-mint-ink"></p>
+        </form>
       </div>
     </div>
   </section>
+
+  <Reviews />
 </Layout>
 
-<script>
-  const form = document.getElementById('review-form') as HTMLFormElement;
-  const status = document.getElementById('review-status') as HTMLParagraphElement;
+<script define:vars={{ email: site.email }}>
+  document.querySelectorAll('form[data-web3form]:not([data-bound])').forEach((form) => {
+    form.dataset.bound = 'true';
+    const status = form.querySelector('[data-status]');
+    const button = form.querySelector('button[type="submit"]');
 
-  form?.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
-    submitBtn.disabled = true;
-    status.textContent = 'Sending…';
-
-    const formData = new FormData(form);
-    const object: Record<string, string> = {};
-    formData.forEach((value, key) => { object[key] = value.toString(); });
-    const json = JSON.stringify(object);
-
-    try {
-      const res = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: json,
-      });
-      const result = await res.json();
-
-      if (result.success) {
-        status.textContent = 'Thanks! Your review has been submitted for approval.';
-        form.reset();
-      } else {
-        status.textContent = 'Something went wrong. Please try again.';
-        console.error(result);
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      if (!form.checkValidity()) {
+        status.dataset.state = 'error';
+        status.textContent = 'Add your name, a star rating and a few words, then send again.';
+        return;
       }
-    } catch (err) {
-      status.textContent = 'Network error. Please try again.';
-      console.error(err);
-    } finally {
-      submitBtn.disabled = false;
-    }
+      const label = button.textContent;
+      button.disabled = true;
+      button.textContent = 'Sending…';
+      try {
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify(Object.fromEntries(new FormData(form))),
+        });
+        const result = await res.json();
+        if (!result.success) throw new Error(result.message);
+        form.reset();
+        status.dataset.state = 'ok';
+        status.textContent = form.dataset.success;
+      } catch (err) {
+        console.error(err);
+        status.dataset.state = 'error';
+        status.textContent = `Review not sent. Check your connection and try again, or email ${email}.`;
+      } finally {
+        button.disabled = false;
+        button.textContent = label;
+      }
+    });
   });
 </script>

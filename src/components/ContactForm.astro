@@ -1,0 +1,103 @@
+---
+import { site } from '../data/site';
+
+interface Props {
+  id?: string;
+  reviewChecked?: boolean;
+}
+const { id = 'contact-form', reviewChecked = false } = Astro.props;
+---
+
+<form id={id} class="space-y-5" data-web3form data-success="Message sent. I’ll reply within one working day." novalidate>
+  <input type="hidden" name="access_key" value={site.web3formsKey} />
+  <input type="hidden" name="subject" value="New enquiry from christophernoblett.ie" />
+  <input type="hidden" name="from_name" value="christophernoblett.ie" />
+  <input type="checkbox" name="botcheck" class="hidden" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+  <div class="grid gap-5 sm:grid-cols-2">
+    <div>
+      <label class="label" for={`${id}-name`}>Your name</label>
+      <input class="field" id={`${id}-name`} name="name" type="text" autocomplete="name" required />
+    </div>
+    <div>
+      <label class="label" for={`${id}-clinic`}>Clinic name</label>
+      <input class="field" id={`${id}-clinic`} name="clinic" type="text" autocomplete="organization" />
+    </div>
+    <div>
+      <label class="label" for={`${id}-email`}>Email</label>
+      <input class="field" id={`${id}-email`} name="email" type="email" autocomplete="email" required />
+    </div>
+    <div>
+      <label class="label" for={`${id}-phone`}>Phone <span class="font-normal text-slate">(optional)</span></label>
+      <input class="field" id={`${id}-phone`} name="phone" type="tel" autocomplete="tel" />
+    </div>
+  </div>
+
+  <div>
+    <label class="label" for={`${id}-website`}>Current website <span class="font-normal text-slate">(if you have one)</span></label>
+    <input class="field" id={`${id}-website`} name="website" type="text" inputmode="url" placeholder="yourclinic.ie" />
+  </div>
+
+  <div>
+    <label class="label" for={`${id}-message`}>What do you need?</label>
+    <textarea class="field min-h-[8rem]" id={`${id}-message`} name="message" rows="5" required placeholder="A new site, a refresh, online booking, anything you have in mind."></textarea>
+  </div>
+
+  <label class="flex cursor-pointer items-start gap-3 text-[0.975rem]">
+    <input type="checkbox" name="free_review" value="Yes" checked={reviewChecked} class="mt-1 h-4 w-4 flex-none rounded border-line text-brand-500 accent-brand-500" />
+    <span>Send me a free review of my current website</span>
+  </label>
+
+  <div class="flex flex-col gap-4 pt-1 sm:flex-row sm:items-center">
+    <button type="submit" class="btn btn-primary sm:min-w-[12rem]">Send message</button>
+    <p class="text-sm text-slate">Replies within one working day.</p>
+  </div>
+
+  <p data-status role="status" aria-live="polite" class="min-h-[1.5rem] text-[0.975rem] font-medium data-[state=error]:text-red-700 data-[state=ok]:text-mint-ink"></p>
+</form>
+
+<script define:vars={{ email: site.email }}>
+  document.querySelectorAll('form[data-web3form]:not([data-bound])').forEach((form) => {
+    form.dataset.bound = 'true';
+    const status = form.querySelector('[data-status]');
+    const button = form.querySelector('button[type="submit"]');
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      if (!form.checkValidity()) {
+        status.dataset.state = 'error';
+        status.textContent = 'Add your name, a valid email and a short message, then send again.';
+        form.querySelector(':invalid')?.focus();
+        return;
+      }
+
+      const label = button.textContent;
+      button.disabled = true;
+      button.textContent = 'Sending…';
+      status.textContent = '';
+      delete status.dataset.state;
+
+      try {
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify(Object.fromEntries(new FormData(form))),
+        });
+        const result = await res.json();
+        if (!result.success) throw new Error(result.message);
+
+        form.reset();
+        status.dataset.state = 'ok';
+        status.textContent = form.dataset.success;
+      } catch (err) {
+        console.error(err);
+        status.dataset.state = 'error';
+        status.textContent = `Message not sent. Check your connection and try again, or email ${email}.`;
+      } finally {
+        button.disabled = false;
+        button.textContent = label;
+      }
+    });
+  });
+</script>

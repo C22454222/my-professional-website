@@ -1,0 +1,23 @@
+---
+// Renders nothing until you add reviews in src/data/site.ts.
+import { reviews } from '../data/site';
+---
+
+{reviews.length > 0 && (
+  <section class="section border-t border-line bg-white">
+    <div class="wrap">
+      <h2 class="h-section mb-12">What clinics say</h2>
+      <div class="grid gap-10 md:grid-cols-3">
+        {reviews.map((r) => (
+          <figure class="border-t-2 border-ink pt-6">
+            <p class="text-brand-500" aria-label={`${r.rating} out of 5 stars`}>{'★'.repeat(r.rating)}<span class="text-line">{'★'.repeat(5 - r.rating)}</span></p>
+            <blockquote class="mt-4 font-display text-[1.35rem] leading-snug">“{r.text}”</blockquote>
+            <figcaption class="mt-5 text-slate">
+              {r.name}{r.clinic && <>, {r.clinic}</>}
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+)}

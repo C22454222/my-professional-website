@@ -1,0 +1,38 @@
+---
+import { plans } from '../data/site';
+---
+
+<div class="grid overflow-hidden rounded-3xl border border-line bg-white md:grid-cols-3">
+  {plans.map((p, i) => (
+    <div
+      class:list={[
+        'flex flex-col p-7 md:p-9',
+        i > 0 && 'border-t border-line md:border-l md:border-t-0',
+        p.featured && 'bg-mint/45',
+      ]}
+    >
+      <div class="flex items-center justify-between gap-3">
+        <h3 class="text-[1.45rem]">{p.name}</h3>
+        {p.featured && <span class="rounded-full bg-mint px-3 py-1 text-xs font-semibold text-mint-ink">Best for most clinics</span>}
+      </div>
+      <p class="mt-5 font-display text-[2.6rem] leading-none tracking-tight">
+        {p.price}
+        {p.unit && <span class="font-body text-base font-normal text-slate"> {p.unit}</span>}
+      </p>
+      <p class="mt-4 text-slate">{p.summary}</p>
+      <ul class="mt-6 space-y-3 border-t border-ink/10 pt-6 text-[0.975rem]">
+        {p.includes.map((item) => (
+          <li class="flex gap-3">
+            <svg class="mt-1 h-4 w-4 flex-none text-mint-ink" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="m3 8.5 3 3 7-7" />
+            </svg>
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  ))}
+</div>
+<p class="mt-5 text-[0.95rem] text-slate">
+  Every quote is fixed and agreed before work starts. No hidden extras, no long contracts.
+</p>
